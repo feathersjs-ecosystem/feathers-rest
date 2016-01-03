@@ -3,7 +3,11 @@ import wrappers from './wrappers';
 
 const debug = makeDebug('feathers-rest');
 
-export function defaultHandler(req, res) {
+function formatter(req, res, next) {
+  if(!res.data) {
+    next();
+  }
+
   res.format({
     'application/json': function () {
       res.json(res.data);
@@ -11,20 +15,12 @@ export function defaultHandler(req, res) {
   });
 }
 
-export default function rest(config = {}) {
-  var handler = config.handler || defaultHandler;
-
-  if (typeof config === 'function') {
-    handler = config;
-  }
-
+export default function rest(handler = formatter) {
   return function () {
-    var app = this;
-
-    debug('Setting up default middleware for REST handler');
+    const app = this;
 
     app.use(function (req, res, next) {
-      req.feathers = {};
+      req.feathers = { provider: 'rest' };
       next();
     });
 
@@ -32,35 +28,41 @@ export default function rest(config = {}) {
 
     // Register the REST provider
     app.providers.push(function (path, service, options) {
-      var middleware = (options || {}).middleware || {};
-      var before = middleware.before || [];
-      var after = middleware.after || [];
+      const uri = path.indexOf('/') === 0 ? path : `/${path}`;
+      const baseRoute = app.route(uri);
+      const idRoute = app.route(`${uri}/:id`);
 
-      var uri = path.indexOf('/') === 0 ? path : `/${path}`;
-      var baseRoute = app.route(uri);
-      var idRoute = app.route(uri + '/:id');
+      let middleware = (options || {}).middleware || {};
+      let before = middleware.before || [];
+      let after = middleware.after || [];
+
+      if(typeof handler === 'function') {
+        after = after.concat(handler);
+      }
 
       debug(`Adding REST provider for service \`${path}\` at base route \`${uri}\``);
 
       // GET / -> service.find(cb, params)
-      baseRoute.get.apply(baseRoute, before.concat(app.rest.find(service), after, handler));
+      baseRoute.get.apply(baseRoute, before.concat(app.rest.find(service), after));
       // POST / -> service.create(data, params, cb)
-      baseRoute.post.apply(baseRoute, before.concat(app.rest.create(service), after, handler));
+      baseRoute.post.apply(baseRoute, before.concat(app.rest.create(service), after));
       // PATCH / -> service.patch(null, data, params)
-      baseRoute.patch.apply(baseRoute, before.concat(app.rest.patch(service), after, handler));
+      baseRoute.patch.apply(baseRoute, before.concat(app.rest.patch(service), after));
       // PUT / -> service.update(null, data, params)
-      baseRoute.put.apply(baseRoute, before.concat(app.rest.update(service), after, handler));
+      baseRoute.put.apply(baseRoute, before.concat(app.rest.update(service), after));
       // DELETE / -> service.remove(null, params)
-      baseRoute.delete.apply(baseRoute, before.concat(app.rest.remove(service), after, handler));
+      baseRoute.delete.apply(baseRoute, before.concat(app.rest.remove(service), after));
 
       // GET /:id -> service.get(id, params, cb)
-      idRoute.get.apply(idRoute, before.concat(app.rest.get(service), after, handler));
+      idRoute.get.apply(idRoute, before.concat(app.rest.get(service), after));
       // PUT /:id -> service.update(id, data, params, cb)
-      idRoute.put.apply(idRoute, before.concat(app.rest.update(service), after, handler));
+      idRoute.put.apply(idRoute, before.concat(app.rest.update(service), after));
       // PATCH /:id -> service.patch(id, data, params, callback)
-      idRoute.patch.apply(idRoute, before.concat(app.rest.patch(service), after, handler));
+      idRoute.patch.apply(idRoute, before.concat(app.rest.patch(service), after));
       // DELETE /:id -> service.remove(id, params, cb)
-      idRoute.delete.apply(idRoute, before.concat(app.rest.remove(service), after, handler));
+      idRoute.delete.apply(idRoute, before.concat(app.rest.remove(service), after));
     });
   };
 }
+
+rest.formatter = formatter;

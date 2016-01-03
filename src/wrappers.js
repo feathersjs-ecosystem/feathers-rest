@@ -1,7 +1,9 @@
 import makeDebug from 'debug';
 import errors from 'feathers-errors';
+import { hooks } from 'feathers-commons';
 
 const debug = makeDebug('feathers:rest');
+const hookObject = hooks.hookObject;
 const status = {
   created: 201,
   noContent: 204,
@@ -19,8 +21,15 @@ function getHandler (method, getArgs, service) {
       return next(new errors.MethodNotAllowed(`Method \`${method}\` is not supported by this endpoint.`));
     }
 
+    let params = Object.assign({}, req.params || {});
+    delete params.id;
+
+    // Grab the service parameters. Use req.feathers and set the query to req.query
+    params = Object.assign({ query: req.query || {} }, params, req.feathers);
+
     // Run the getArgs callback, if available, for additional parameters
     const args = getArgs(req, res, next);
+
     // The service success callback which sets res.data or calls next() with the error
     const callback = function (error, data) {
       if (error) {
@@ -29,6 +38,7 @@ function getHandler (method, getArgs, service) {
       }
 
       res.data = data;
+      res.hook = hookObject(method, 'after', args.concat([ params, callback ]));
 
       if(!data) {
         debug(`No content returned for '${req.url}'`);
@@ -39,12 +49,6 @@ function getHandler (method, getArgs, service) {
 
       return next();
     };
-
-    let params = Object.assign({}, req.params || {});
-    delete params.id;
-
-    // Grab the service parameters. Use req.feathers and set the query to req.query
-    params = Object.assign({ query: req.query || {} }, params, req.feathers);
 
     debug(`REST handler calling \`${method}\` from \`${req.url}\``);
     service[method].apply(service, args.concat([ params, callback ]));
