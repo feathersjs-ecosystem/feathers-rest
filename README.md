@@ -8,7 +8,7 @@
 
 This provider exposes [Feathers](http://feathersjs.com) services through a RESTful API using [Express](http://expressjs.com). It can be used with Feathers 1.x and 2.x.
 
-__Note:__ For the full API documentation go to [feathersjs.com/docs/providers.md](http://feathersjs.com/docs/providers.md).
+__Note:__ For the full API documentation go to [feathersjs.com/docs/providers.html](http://feathersjs.com/docs/providers.html).
 
 ## Quick example
 
