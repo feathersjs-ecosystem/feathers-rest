@@ -6,7 +6,7 @@
 
 ## About
 
-This provider exposes [Feathers](http://feathersjs.com) services through a RESTful API using [Express](http://expressjs.com). It can be used with Feathers 1.x and 2.x.
+This provider exposes [Feathers](http://feathersjs.com) services through a RESTful API using [Express](http://expressjs.com) that can be used with Feathers 1.x and 2.x as well as client support for Fetch, jQuery, Request and Superagent.
 
 __Note:__ For the full API documentation go to [feathersjs.com/docs/providers.html](http://feathersjs.com/docs/providers.html).
 
@@ -38,6 +38,27 @@ app.use('/:app/todos', {
     });
   }
 });
+```
+
+## Client use
+
+```js
+import feathers from 'feathers/client';
+import rest from 'feathers-rest/client';
+
+import jQuery from 'jquery';
+import fetch from 'node-fetch';
+import request from 'request';
+import superagent from 'superagent';
+
+const app = feathers()
+  .configure(rest('http://baseUrl').jquery(jQuery))
+  // or
+  .configure(rest('http://baseUrl').fetch(fetch))
+  // or
+  .configure(rest('http://baseUrl').request(request))
+  // or
+  .configure(rest('http://baseUrl').superagent(superagent))
 ```
 
 ## Changelog
