@@ -4,7 +4,7 @@ import { hooks } from 'feathers-commons';
 
 const debug = makeDebug('feathers:rest');
 const hookObject = hooks.hookObject;
-const status = {
+const statusCodes = {
   created: 201,
   noContent: 204,
   methodNotAllowed: 405
@@ -17,7 +17,7 @@ function getHandler (method, getArgs, service) {
     // Check if the method exists on the service at all. Send 405 (Method not allowed) if not
     if (typeof service[method] !== 'function') {
       debug(`Method '${method}' not allowed on '${req.url}'`);
-      res.status(status.methodNotAllowed);
+      res.status(statusCodes.methodNotAllowed);
       return next(new errors.MethodNotAllowed(`Method \`${method}\` is not supported by this endpoint.`));
     }
 
@@ -42,9 +42,9 @@ function getHandler (method, getArgs, service) {
 
       if(!data) {
         debug(`No content returned for '${req.url}'`);
-        res.status(status.noContent);
+        res.status(statusCodes.noContent);
       } else if(method === 'create') {
-        res.status(status.created);
+        res.status(statusCodes.created);
       }
 
       return next();

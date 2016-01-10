@@ -19,12 +19,14 @@
     "smarttabs": true,
     "white": false,
     "node": true,
+    "browser": true,
     "globals": {
         "it": true,
         "describe": true,
         "before": true,
         "beforeEach": true,
         "after": true,
-        "afterEach": true
+        "afterEach": true,
+        "jQuery": true
     }
 }
