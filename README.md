@@ -63,6 +63,10 @@ const app = feathers()
 
 ## Changelog
 
+__1.1.0__
+
+- Adding REST clients for jQuery, Request, Superagent and Fetch for universal usage
+
 __1.0.0__
 
 - Initial release of extracted module from Feathers 1.3
