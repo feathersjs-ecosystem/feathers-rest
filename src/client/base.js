@@ -29,14 +29,16 @@ export default class Base {
   find(params = {}) {
     return this.request({
       url: this.makeUrl(params.query),
-      method: 'GET'
+      method: 'GET',
+      headers: Object.assign({}, params.headers)
     });
   }
 
   get(id, params = {}) {
     return this.request({
       url: this.makeUrl(params.query, id),
-      method: 'GET'
+      method: 'GET',
+      headers: Object.assign({}, params.headers)
     });
   }
 
@@ -44,7 +46,8 @@ export default class Base {
     return this.request({
       url: this.makeUrl(params.query),
       body,
-      method: 'POST'
+      method: 'POST',
+      headers: Object.assign({ 'Content-Type': 'application/json' }, params.headers)
     });
   }
 
@@ -52,7 +55,8 @@ export default class Base {
     return this.request({
       url: this.makeUrl(params.query, id),
       body,
-      method: 'PUT'
+      method: 'PUT',
+      headers: Object.assign({ 'Content-Type': 'application/json' }, params.headers)
     });
   }
 
@@ -60,14 +64,16 @@ export default class Base {
     return this.request({
       url: this.makeUrl(params.query, id),
       body,
-      method: 'PATCH'
+      method: 'PATCH',
+      headers: Object.assign({ 'Content-Type': 'application/json' }, params.headers)
     });
   }
 
   remove(id, params = {}) {
     return this.request({
       url: this.makeUrl(params.query, id),
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: Object.assign({}, params.headers)
     });
   }
 }
