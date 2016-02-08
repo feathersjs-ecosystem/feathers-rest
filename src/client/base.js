@@ -10,6 +10,7 @@ export default class Base {
   }
 
   makeUrl(params, id) {
+    params = params || {};
     let url = this.base;
 
     if (typeof id !== 'undefined') {
@@ -25,48 +26,54 @@ export default class Base {
     return url;
   }
 
-  find(params) {
+  find(params = {}) {
     return this.request({
-      url: this.makeUrl(params),
-      method: 'GET'
+      url: this.makeUrl(params.query),
+      method: 'GET',
+      headers: Object.assign({}, params.headers)
     });
   }
 
-  get(id, params) {
+  get(id, params = {}) {
     return this.request({
-      url: this.makeUrl(params, id),
-      method: 'GET'
+      url: this.makeUrl(params.query, id),
+      method: 'GET',
+      headers: Object.assign({}, params.headers)
     });
   }
 
-  create(body, params) {
+  create(body, params = {}) {
     return this.request({
-      url: this.makeUrl(params),
+      url: this.makeUrl(params.query),
       body,
-      method: 'POST'
+      method: 'POST',
+      headers: Object.assign({ 'Content-Type': 'application/json' }, params.headers)
     });
   }
 
-  update(id, body, params) {
+  update(id, body, params = {}) {
     return this.request({
-      url: this.makeUrl(params, id),
+      url: this.makeUrl(params.query, id),
       body,
-      method: 'PUT'
+      method: 'PUT',
+      headers: Object.assign({ 'Content-Type': 'application/json' }, params.headers)
     });
   }
 
-  patch(id, body, params) {
+  patch(id, body, params = {}) {
     return this.request({
-      url: this.makeUrl(params, id),
+      url: this.makeUrl(params.query, id),
       body,
-      method: 'PATCH'
+      method: 'PATCH',
+      headers: Object.assign({ 'Content-Type': 'application/json' }, params.headers)
     });
   }
 
-  remove(id, params) {
+  remove(id, params = {}) {
     return this.request({
-      url: this.makeUrl(params, id),
-      method: 'DELETE'
+      url: this.makeUrl(params.query, id),
+      method: 'DELETE',
+      headers: Object.assign({}, params.headers)
     });
   }
 }

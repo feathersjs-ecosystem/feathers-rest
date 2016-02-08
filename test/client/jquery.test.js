@@ -1,3 +1,4 @@
+import assert from 'assert';
 import jsdom from 'jsdom';
 import feathers from 'feathers';
 import baseTests from 'feathers-commons/lib/test/client';
@@ -31,4 +32,16 @@ describe('jQuery REST connector', function() {
   });
 
   baseTests(service);
+
+  it('supports custom headers', function(done){
+    let headers = {
+      'Authorization': 'let-me-in'
+    };
+    service.get(0, { headers }).then(todo => assert.deepEqual(todo, {
+        id: 0,
+        text: 'some todo',
+        complete: false,
+        query: {}
+      })).then(done).catch(done);
+  });
 });

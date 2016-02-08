@@ -6,6 +6,8 @@ export default class Service extends Base {
       .type(options.type || 'json');
 
     return new Promise((resolve, reject) => {
+      superagent.set(options.headers);
+
       if(options.body) {
         superagent.send(options.body);
       }

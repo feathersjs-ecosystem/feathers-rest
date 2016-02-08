@@ -1,3 +1,4 @@
+import assert from 'assert';
 import request from 'request';
 import feathers from 'feathers/client';
 import baseTests from 'feathers-commons/lib/test/client';
@@ -19,4 +20,16 @@ describe('node-request REST connector', function() {
   });
 
   baseTests(service);
+
+  it('supports custom headers', function(done){
+    let headers = {
+      'Authorization': 'let-me-in'
+    };
+    service.get(0, { headers }).then(todo => assert.deepEqual(todo, {
+        id: 0,
+        text: 'some todo',
+        complete: false,
+        query: {}
+      })).then(done).catch(done);
+  });
 });
