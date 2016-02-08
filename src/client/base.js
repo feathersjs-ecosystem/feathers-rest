@@ -10,6 +10,7 @@ export default class Base {
   }
 
   makeUrl(params, id) {
+    params = params || {};
     let url = this.base;
 
     if (typeof id !== 'undefined') {
@@ -25,47 +26,47 @@ export default class Base {
     return url;
   }
 
-  find(params) {
+  find(params = {}) {
     return this.request({
-      url: this.makeUrl(params),
+      url: this.makeUrl(params.query),
       method: 'GET'
     });
   }
 
-  get(id, params) {
+  get(id, params = {}) {
     return this.request({
-      url: this.makeUrl(params, id),
+      url: this.makeUrl(params.query, id),
       method: 'GET'
     });
   }
 
-  create(body, params) {
+  create(body, params = {}) {
     return this.request({
-      url: this.makeUrl(params),
+      url: this.makeUrl(params.query),
       body,
       method: 'POST'
     });
   }
 
-  update(id, body, params) {
+  update(id, body, params = {}) {
     return this.request({
-      url: this.makeUrl(params, id),
+      url: this.makeUrl(params.query, id),
       body,
       method: 'PUT'
     });
   }
 
-  patch(id, body, params) {
+  patch(id, body, params = {}) {
     return this.request({
-      url: this.makeUrl(params, id),
+      url: this.makeUrl(params.query, id),
       body,
       method: 'PATCH'
     });
   }
 
-  remove(id, params) {
+  remove(id, params = {}) {
     return this.request({
-      url: this.makeUrl(params, id),
+      url: this.makeUrl(params.query, id),
       method: 'DELETE'
     });
   }
