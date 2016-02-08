@@ -32,4 +32,11 @@ describe('fetch REST connector', function() {
         query: {}
       })).then(done).catch(done);
   });
+
+  it('handles errors properly', function(done){
+    service.get(-1, {}).catch(error => {
+      assert.equal(error.code, 404);
+      done();
+    });
+  });
 });
