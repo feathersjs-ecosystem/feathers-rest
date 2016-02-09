@@ -22,6 +22,7 @@ export default function(base = '') {
       }
 
       return function() {
+        this.rest = connection;
         this.defaultService = function(name) {
           return new Service({ base, name, connection, options });
         };

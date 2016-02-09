@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+import feathers from 'feathers/client';
 import assert from 'assert';
 
 describe('REST client tests', function() {
@@ -21,5 +23,13 @@ describe('REST client tests', function() {
     } catch(e) {
       assert.equal(e.message, 'fetch has to be provided to feathers-rest');
     }
+  });
+
+  it('app has the rest attribute', () => {
+    const app = feathers();
+    const rest = require('../../client');
+    app.configure(rest('http://localhost:8889').fetch(fetch));
+    
+    assert.ok(app.rest);
   });
 });
