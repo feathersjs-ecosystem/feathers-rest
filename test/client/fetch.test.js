@@ -7,7 +7,8 @@ import server from './server';
 import rest from '../../client';
 
 describe('fetch REST connector', function() {
-  const setup = rest('http://localhost:8889').fetch(fetch);
+  const url = 'http://localhost:8889';
+  const setup = rest(url).fetch(fetch);
   const app = feathers().configure(setup);
   const service = app.service('todos');
 
@@ -21,7 +22,7 @@ describe('fetch REST connector', function() {
 
   baseTests(service);
 
-  it('supports custom headers', function(done){
+  it('supports custom headers', done => {
     let headers = {
       'Authorization': 'let-me-in'
     };
@@ -33,10 +34,24 @@ describe('fetch REST connector', function() {
       })).then(done).catch(done);
   });
 
-  it('handles errors properly', function(done){
+  it('handles errors properly', done => {
     service.get(-1, {}).catch(error => {
       assert.equal(error.code, 404);
       done();
     });
+  });
+  
+  it('can initialize a client instance', done => {
+    const init = rest(url).fetch(fetch);
+    const todos = init.service('todos');
+    
+    assert.ok(todos instanceof init.Service, 'Returned service is a client');
+    todos.find({}).then(todos => assert.deepEqual(todos, [
+      {
+        text: 'some todo',
+        complete: false,
+        id: 0
+      }
+    ])).then(() => done()).catch(done);
   });
 });

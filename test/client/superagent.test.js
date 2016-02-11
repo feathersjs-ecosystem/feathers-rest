@@ -7,7 +7,8 @@ import server from './server';
 import rest from '../../client';
 
 describe('Superagent REST connector', function() {
-  const setup = rest('http://localhost:8889').superagent(superagent);
+  const url = 'http://localhost:8889';
+  const setup = rest(url).superagent(superagent);
   const app = feathers().configure(setup);
   const service = app.service('todos');
 
@@ -31,5 +32,19 @@ describe('Superagent REST connector', function() {
         complete: false,
         query: {}
       })).then(done).catch(done);
+  });
+  
+  it('can initialize a client instance', done => {
+    const init = rest(url).superagent(superagent);
+    const todos = init.service('todos');
+    
+    assert.ok(todos instanceof init.Service, 'Returned service is a client');
+    todos.find({}).then(todos => assert.deepEqual(todos, [
+      {
+        text: 'some todo',
+        complete: false,
+        id: 0
+      }
+    ])).then(() => done()).catch(done);
   });
 });

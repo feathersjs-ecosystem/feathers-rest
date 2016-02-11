@@ -20,13 +20,24 @@ export default function(base = '') {
       if(!connection) {
         throw new Error(`${key} has to be provided to feathers-rest`);
       }
-
-      return function() {
-        this.rest = connection;
-        this.defaultService = function(name) {
-          return new Service({ base, name, connection, options });
-        };
+      
+      const defaultService = function(name) {
+        return new Service({ base, name, connection, options });
       };
+
+      const initialize = function() {
+        if(typeof this.defaultService === 'function') {
+          throw new Error('Only one default client provider can be configured');
+        }
+        
+        this.rest = connection;
+        this.defaultService = defaultService;
+      };
+      
+      initialize.Service = Service;
+      initialize.service = defaultService;
+      
+      return initialize;
     };
   });
 

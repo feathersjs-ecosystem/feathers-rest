@@ -7,7 +7,8 @@ import server from './server';
 import rest from '../../client';
 
 describe('jQuery REST connector', function() {
-  const setup = rest('http://localhost:7676').jquery({});
+  const url = 'http://localhost:7676';
+  const setup = rest(url).jquery({});
   const app = feathers().configure(setup);
   const service = app.service('todos');
 
@@ -43,5 +44,19 @@ describe('jQuery REST connector', function() {
         complete: false,
         query: {}
       })).then(done).catch(done);
+  });
+  
+  it('can initialize a client instance', done => {
+    const init = rest(url).jquery(service.connection);
+    const todos = init.service('todos');
+    
+    assert.ok(todos instanceof init.Service, 'Returned service is a client');
+    todos.find({}).then(todos => assert.deepEqual(todos, [
+      {
+        text: 'some todo',
+        complete: false,
+        id: 0
+      }
+    ])).then(() => done()).catch(done);
   });
 });
