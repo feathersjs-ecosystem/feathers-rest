@@ -32,4 +32,17 @@ describe('REST client tests', function() {
     
     assert.ok(app.rest);
   });
+  
+  it('throws an error when configured twice', () => {
+    const app = feathers();
+    const rest = require('../../client');
+    app.configure(rest('http://localhost:8889').fetch(fetch));
+    
+    try {
+      app.configure(rest('http://localhost:8889').fetch(fetch));
+      assert.ok(false, 'Should never get here');
+    } catch (e) {
+      assert.equal(e.message, 'Only one default client provider can be configured');
+    }
+  });
 });
