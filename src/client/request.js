@@ -11,7 +11,11 @@ export default class Service extends Base {
         }
 
         if(!error && res.statusCode >= 400) {
-          return reject(new Error(data));
+          if(typeof data === 'string') {
+            return reject(new Error(data));
+          }
+
+          return reject(Object.assign(new Error(data.message), data));
         }
 
         resolve(data);
