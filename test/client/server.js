@@ -3,6 +3,20 @@ import bodyParser from 'body-parser';
 import memory from 'feathers-memory';
 import rest from '../../src';
 
+Object.defineProperty(Error.prototype, 'toJSON', {
+    value: function () {
+        var alt = {};
+
+        Object.getOwnPropertyNames(this).forEach(function (key) {
+            alt[key] = this[key];
+        }, this);
+
+        return alt;
+    },
+    configurable: true,
+    writable: true
+});
+
 /*jshint unused: false*/
 let errorHandler = function(error, req, res, next) {
   const code = !isNaN( parseInt(error.code, 10) ) ? parseInt(error.code, 10) : 500;

@@ -33,11 +33,11 @@ describe('node-request REST connector', function() {
         query: {}
       })).then(done).catch(done);
   });
-  
+
   it('can initialize a client instance', done => {
     const init = rest(url).request(request);
     const todos = init.service('todos');
-    
+
     assert.ok(todos instanceof init.Service, 'Returned service is a client');
     todos.find({}).then(todos => assert.deepEqual(todos, [
       {
@@ -46,5 +46,12 @@ describe('node-request REST connector', function() {
         id: 0
       }
     ])).then(() => done()).catch(done);
+  });
+
+  it('converts errors properly', done => {
+    service.get(1, { query: { error: true } }).catch(e => {
+      assert.equal(e.message, 'Something went wrong');
+      done();
+    }).catch(done);
   });
 });
