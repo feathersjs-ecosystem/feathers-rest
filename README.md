@@ -47,14 +47,13 @@ import feathers from 'feathers/client';
 import rest from 'feathers-rest/client';
 
 import jQuery from 'jquery';
-import fetch from 'node-fetch';
 import request from 'request';
 import superagent from 'superagent';
 
 const app = feathers()
   .configure(rest('http://baseUrl').jquery(jQuery))
   // or
-  .configure(rest('http://baseUrl').fetch(fetch))
+  .configure(rest('http://baseUrl').fetch(window.fetch.bind(window)))
   // or
   .configure(rest('http://baseUrl').request(request))
   // or
