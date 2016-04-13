@@ -3,6 +3,7 @@ import Base from './base';
 export default class Service extends Base {
   request(options) {
     const superagent = this.connection(options.method, options.url)
+      .set('Accept', 'application/json')
       .type(options.type || 'json');
 
     return new Promise((resolve, reject) => {
