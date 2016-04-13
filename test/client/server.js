@@ -44,7 +44,21 @@ module.exports = function(configurer) {
   });
 
   var app = feathers()
-    .configure(rest())
+    .configure(rest(function formatter(req, res, next) {
+      if(!res.data) {
+        next();
+      }
+
+      res.format({
+        html() {
+          res.end('<h1>This is HTML content. You should not see it.</h1>');
+        },
+
+        json() {
+          res.json(res.data);
+        }
+      });
+    }))
     // Parse HTTP bodies
     .use(bodyParser.json())
     .use(bodyParser.urlencoded({ extended: true }))

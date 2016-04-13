@@ -4,6 +4,10 @@ export default class Service extends Base {
   request(options) {
     let fetchOptions = Object.assign({}, options);
 
+    fetchOptions.headers = Object.assign({
+      Accept: 'application/json'
+    }, fetchOptions.headers);
+
     if (options.body) {
       fetchOptions.body = JSON.stringify(options.body);
     }
@@ -20,7 +24,7 @@ export default class Service extends Base {
     if (response.ok) {
       return response;
     }
-      
+
     let error = new Error(response.statusText);
     error.code = response.status;
     error.response = response;
