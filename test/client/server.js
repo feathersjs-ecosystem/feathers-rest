@@ -33,13 +33,23 @@ let errorHandler = function(error, req, res, next) {
 module.exports = function(configurer) {
   // Create an in-memory CRUD service for our Todos
   var todoService = memory().extend({
-    get: function(id, params) {
+    get(id, params) {
       if(params.query.error) {
         throw new Error('Something went wrong');
       }
 
       return this._super(id, params)
         .then(data => Object.assign({ query: params.query }, data));
+    },
+
+    remove(id) {
+      if(id === null) {
+        return Promise.resolve({
+          id, text: 'deleted many'
+        });
+      }
+
+      return this._super.apply(this, arguments);
     }
   });
 

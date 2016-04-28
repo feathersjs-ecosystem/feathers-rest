@@ -54,4 +54,12 @@ describe('node-request REST connector', function() {
       done();
     }).catch(done);
   });
+
+  it('remove many', done => {
+    service.remove(null).then(todo => {
+      assert.equal(todo.id, null);
+      assert.equal(todo.text, 'deleted many');
+      done();
+    });
+  });
 });
