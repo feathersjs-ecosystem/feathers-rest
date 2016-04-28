@@ -9,11 +9,28 @@ const statusCodes = {
   noContent: 204,
   methodNotAllowed: 405
 };
+const methodMap = {
+  find: 'GET',
+  get: 'GET',
+  create: 'POST',
+  update: 'PUT',
+  patch: 'PATCH',
+  remove: 'DELETE'
+};
+const allowedMethods = function(service) {
+  return Object.keys(methodMap)
+    .filter(method => typeof service[method] === 'function')
+    .map(method => methodMap[method])
+    // Filter out duplicates
+    .filter((value, index, list) => list.indexOf(value) === index);
+};
 
 // A function that returns the middleware for a given method and service
 // `getArgs` is a function that should return additional leading service arguments
 function getHandler (method, getArgs, service) {
   return function (req, res, next) {
+    res.setHeader('Allow', allowedMethods(service).join(','));
+
     // Check if the method exists on the service at all. Send 405 (Method not allowed) if not
     if (typeof service[method] !== 'function') {
       debug(`Method '${method}' not allowed on '${req.url}'`);

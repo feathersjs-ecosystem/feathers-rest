@@ -296,12 +296,16 @@ describe('REST provider', function () {
     before(function() {
       app = feathers().configure(rest(rest.formatter))
         .use('todo', {
-          get(id, params, callback) {
-            callback(null, { description: `You have to do ${id}` });
+          get(id) {
+            return Promise.resolve({ description: `You have to do ${id}` });
           },
 
-          find(params, callback) {
-            callback();
+          patch() {
+            return Promise.reject(new Error('Not implemented'));
+          },
+
+          find() {
+            return Promise.resolve(null);
           }
         });
 
@@ -318,7 +322,7 @@ describe('REST provider', function () {
 
     after(done => server.close(done));
 
-    it('throws a 405 for undefined service methods (#99)', done => {
+    it('throws a 405 for undefined service methods and sets Allow header (#99)', done => {
       request('http://localhost:4780/todo/dishes', (error, response, body) => {
         assert.ok(response.statusCode === 200, 'Got OK status code for .get');
         assert.deepEqual(JSON.parse(body), { description: 'You have to do dishes' }, 'Got expected object');
@@ -326,6 +330,7 @@ describe('REST provider', function () {
           method: 'post',
           url: 'http://localhost:4780/todo'
         }, (error, response, body) => {
+          assert.equal(response.headers.allow, 'GET,PATCH');
           assert.ok(response.statusCode === 405, 'Got 405 for .create');
           assert.deepEqual(JSON.parse(body), { message: 'Method `create` is not supported by this endpoint.' }, 'Error serialized as expected');
           done();
