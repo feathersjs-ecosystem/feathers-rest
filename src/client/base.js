@@ -13,7 +13,7 @@ export default class Base {
     params = params || {};
     let url = this.base;
 
-    if (typeof id !== 'undefined') {
+    if (typeof id !== 'undefined' && id !== null) {
       url += `/${id}`;
     }
 

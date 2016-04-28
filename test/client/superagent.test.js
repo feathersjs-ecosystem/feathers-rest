@@ -33,11 +33,11 @@ describe('Superagent REST connector', function() {
         query: {}
       })).then(done).catch(done);
   });
-  
+
   it('can initialize a client instance', done => {
     const init = rest(url).superagent(superagent);
     const todos = init.service('todos');
-    
+
     assert.ok(todos instanceof init.Service, 'Returned service is a client');
     todos.find({}).then(todos => assert.deepEqual(todos, [
       {
@@ -46,5 +46,13 @@ describe('Superagent REST connector', function() {
         id: 0
       }
     ])).then(() => done()).catch(done);
+  });
+
+  it('remove many', done => {
+    service.remove(null).then(todo => {
+      assert.equal(todo.id, null);
+      assert.equal(todo.text, 'deleted many');
+      done();
+    });
   });
 });
