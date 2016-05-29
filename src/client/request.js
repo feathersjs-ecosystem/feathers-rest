@@ -15,6 +15,8 @@ export default class Service extends Base {
             return reject(new Error(data));
           }
 
+          data.response = res;
+
           return reject(Object.assign(new Error(data.message), data));
         }
 

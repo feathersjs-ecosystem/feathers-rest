@@ -1,5 +1,10 @@
 import query from 'qs';
 import { stripSlashes } from 'feathers-commons';
+import { convert } from 'feathers-errors';
+
+function toError(error) {
+  throw convert(error);
+}
 
 export default class Base {
   constructor(settings) {
@@ -31,7 +36,7 @@ export default class Base {
       url: this.makeUrl(params.query),
       method: 'GET',
       headers: Object.assign({}, params.headers)
-    });
+    }).catch(toError);
   }
 
   get(id, params = {}) {
@@ -39,7 +44,7 @@ export default class Base {
       url: this.makeUrl(params.query, id),
       method: 'GET',
       headers: Object.assign({}, params.headers)
-    });
+    }).catch(toError);
   }
 
   create(body, params = {}) {
@@ -48,7 +53,7 @@ export default class Base {
       body,
       method: 'POST',
       headers: Object.assign({ 'Content-Type': 'application/json' }, params.headers)
-    });
+    }).catch(toError);
   }
 
   update(id, body, params = {}) {
@@ -57,7 +62,7 @@ export default class Base {
       body,
       method: 'PUT',
       headers: Object.assign({ 'Content-Type': 'application/json' }, params.headers)
-    });
+    }).catch(toError);
   }
 
   patch(id, body, params = {}) {
@@ -66,7 +71,7 @@ export default class Base {
       body,
       method: 'PATCH',
       headers: Object.assign({ 'Content-Type': 'application/json' }, params.headers)
-    });
+    }).catch(toError);
   }
 
   remove(id, params = {}) {
@@ -74,6 +79,6 @@ export default class Base {
       url: this.makeUrl(params.query, id),
       method: 'DELETE',
       headers: Object.assign({}, params.headers)
-    });
+    }).catch(toError);
   }
 }

@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import assert from'assert';
 import feathers from 'feathers/client';
+import errors from 'feathers-errors';
 import baseTests from 'feathers-commons/lib/test/client';
 
 import server from './server';
@@ -38,7 +39,7 @@ describe('fetch REST connector', function() {
     service.get(-1, {}).catch(error => {
       assert.equal(error.code, 404);
       done();
-    });
+    }).catch(done);
   });
 
   it('can initialize a client instance', done => {
@@ -60,6 +61,17 @@ describe('fetch REST connector', function() {
       assert.equal(todo.id, null);
       assert.equal(todo.text, 'deleted many');
       done();
-    });
+    }).catch(done);
+  });
+
+  it('converts feathers errors (#50)', done => {
+    service.get(0, { query: { feathersError: true } }).catch(error => {
+      assert.ok(error instanceof errors.NotAcceptable);
+      assert.equal(error.message, 'This is a Feathers error');
+      assert.equal(error.code, 406);
+      assert.deepEqual(error.data, { data: true });
+      assert.ok(error.response);
+      done();
+    }).catch(done);
   });
 });

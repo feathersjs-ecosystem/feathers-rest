@@ -25,10 +25,26 @@ export default class Service extends Base {
       return response;
     }
 
-    let error = new Error(response.statusText);
-    error.code = response.status;
-    error.response = response;
-    throw error;
+    return new Promise((resolve, reject) => {
+      let body = response.body;
+      let buffer = '';
+
+      body.on('data', data => buffer += data.toString());
+      body.on('error', reject);
+      body.on('end', () => {
+        let error = new Error(buffer);
+
+        try {
+          error = JSON.parse(buffer);
+        } catch(e) {
+          error.code = response.status;
+        }
+
+        error.response = response;
+
+        reject(error);
+      });
+    });
   }
 
   parseJSON(response) {

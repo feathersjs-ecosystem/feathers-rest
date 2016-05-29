@@ -2,6 +2,7 @@ import assert from 'assert';
 import superagent from 'superagent';
 import feathers from 'feathers/client';
 import baseTests from 'feathers-commons/lib/test/client';
+import errors from 'feathers-errors';
 
 import server from './server';
 import rest from '../../client';
@@ -53,6 +54,16 @@ describe('Superagent REST connector', function() {
       assert.equal(todo.id, null);
       assert.equal(todo.text, 'deleted many');
       done();
-    });
+    }).catch(done);
+  });
+
+  it('converts feathers errors (#50)', done => {
+    service.get(0, { query: { feathersError: true } }).catch(error => {
+      assert.ok(error instanceof errors.NotAcceptable);
+      assert.equal(error.message, 'This is a Feathers error');
+      assert.equal(error.code, 406);
+      assert.ok(error.response);
+      done();
+    }).catch(done);
   });
 });

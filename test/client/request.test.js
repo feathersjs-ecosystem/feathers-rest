@@ -2,6 +2,7 @@ import assert from 'assert';
 import request from 'request';
 import feathers from 'feathers/client';
 import baseTests from 'feathers-commons/lib/test/client';
+import errors from 'feathers-errors';
 
 import server from './server';
 import rest from '../../client';
@@ -61,5 +62,16 @@ describe('node-request REST connector', function() {
       assert.equal(todo.text, 'deleted many');
       done();
     });
+  });
+
+  it('converts feathers errors (#50)', done => {
+    service.get(0, { query: { feathersError: true } }).catch(error => {
+      assert.ok(error instanceof errors.NotAcceptable);
+      assert.equal(error.message, 'This is a Feathers error');
+      assert.equal(error.code, 406);
+      assert.deepEqual(error.data, { data: true });
+      assert.ok(error.response);
+      done();
+    }).catch(done);
   });
 });
