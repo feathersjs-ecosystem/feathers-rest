@@ -1,5 +1,19 @@
 # Change Log
 
+## [v1.4.0](https://github.com/feathersjs/feathers-rest/tree/v1.4.0) (2016-05-30)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.3.0...v1.4.0)
+
+**Closed issues:**
+
+- Clients should convert error objects to feathers-errors [\#50](https://github.com/feathersjs/feathers-rest/issues/50)
+
+**Merged pull requests:**
+
+- Convert to Feathers errors [\#53](https://github.com/feathersjs/feathers-rest/pull/53) ([daffl](https://github.com/daffl))
+- Update superagent to version 2.0.0 🚀 [\#52](https://github.com/feathersjs/feathers-rest/pull/52) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- mocha@2.5.0 breaks build 🚨 [\#48](https://github.com/feathersjs/feathers-rest/pull/48) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update babel-plugin-add-module-exports to version 0.2.0 🚀 [\#45](https://github.com/feathersjs/feathers-rest/pull/45) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
 ## [v1.3.0](https://github.com/feathersjs/feathers-rest/tree/v1.3.0) (2016-04-28)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.2.5...v1.3.0)
 
