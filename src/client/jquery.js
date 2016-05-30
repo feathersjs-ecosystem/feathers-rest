@@ -20,7 +20,9 @@ export default class Service extends Base {
 
         try {
           error = JSON.parse(error);
-        } catch(e) {}
+        } catch(e) {
+          error = new Error(xhr.responseText);
+        }
 
         error.xhr = error.response = xhr;
 
