@@ -1,6 +1,7 @@
 import feathers from 'feathers';
 import bodyParser from 'body-parser';
 import memory from 'feathers-memory';
+import errors from 'feathers-errors';
 import rest from '../../src';
 
 Object.defineProperty(Error.prototype, 'toJSON', {
@@ -36,6 +37,10 @@ module.exports = function(configurer) {
     get(id, params) {
       if(params.query.error) {
         throw new Error('Something went wrong');
+      }
+
+      if(params.query.feathersError) {
+        throw new errors.NotAcceptable('This is a Feathers error', { data: true });
       }
 
       return this._super(id, params)

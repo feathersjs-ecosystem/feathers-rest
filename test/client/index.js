@@ -29,15 +29,15 @@ describe('REST client tests', function() {
     const app = feathers();
     const rest = require('../../client');
     app.configure(rest('http://localhost:8889').fetch(fetch));
-    
+
     assert.ok(app.rest);
   });
-  
+
   it('throws an error when configured twice', () => {
     const app = feathers();
     const rest = require('../../client');
     app.configure(rest('http://localhost:8889').fetch(fetch));
-    
+
     try {
       app.configure(rest('http://localhost:8889').fetch(fetch));
       assert.ok(false, 'Should never get here');

@@ -15,6 +15,12 @@ export default class Service extends Base {
 
       superagent.end(function(error, res) {
         if(error) {
+          try {
+            const response = error.response;
+            error = JSON.parse(error.response.text);
+            error.response = response;
+          } catch(e) {}
+
           return reject(error);
         }
 
