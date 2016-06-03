@@ -12,12 +12,11 @@ export default class Service extends Base {
       fetchOptions.body = JSON.stringify(options.body);
     }
 
-    return new Promise((resolve, reject) => {
-      this.connection(options.url, fetchOptions)
+    const fetch = this.connection;
+
+    return fetch(options.url, fetchOptions)
         .then(this.checkStatus)
-        .then(this.parseJSON)
-        .then(resolve).catch(reject);
-    });
+        .then(this.parseJSON);
   }
 
   checkStatus(response) {
