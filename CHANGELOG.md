@@ -1,5 +1,19 @@
 # Change Log
 
+## [v1.4.2](https://github.com/feathersjs/feathers-rest/tree/v1.4.2) (2016-06-04)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.4.1...v1.4.2)
+
+**Closed issues:**
+
+- Support native browser fetch [\#54](https://github.com/feathersjs/feathers-rest/issues/54)
+
+**Merged pull requests:**
+
+- Fix fetch reference so that it works in the browser [\#55](https://github.com/feathersjs/feathers-rest/pull/55) ([daffl](https://github.com/daffl))
+
+## [v1.4.1](https://github.com/feathersjs/feathers-rest/tree/v1.4.1) (2016-05-30)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.4.0...v1.4.1)
+
 ## [v1.4.0](https://github.com/feathersjs/feathers-rest/tree/v1.4.0) (2016-05-30)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.3.0...v1.4.0)
 
