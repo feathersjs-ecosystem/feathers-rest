@@ -1,5 +1,19 @@
 # Change Log
 
+## [v1.4.3](https://github.com/feathersjs/feathers-rest/tree/v1.4.3) (2016-07-14)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.4.2...v1.4.3)
+
+**Closed issues:**
+
+- Implementation of fetch doesn't work in browser? [\#62](https://github.com/feathersjs/feathers-rest/issues/62)
+- Setting hook.method should direct the request to the chosen method. [\#60](https://github.com/feathersjs/feathers-rest/issues/60)
+-  Error in REST handler: `Invalid atomic update value for $\_\_original\_remove. Expected an object, received function` [\#59](https://github.com/feathersjs/feathers-rest/issues/59)
+- Return `error.response.json\(\)` doesn't resolve using fetch [\#56](https://github.com/feathersjs/feathers-rest/issues/56)
+
+**Merged pull requests:**
+
+- Use response.json\(\) for converting errors [\#63](https://github.com/feathersjs/feathers-rest/pull/63) ([daffl](https://github.com/daffl))
+
 ## [v1.4.2](https://github.com/feathersjs/feathers-rest/tree/v1.4.2) (2016-06-04)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.4.1...v1.4.2)
 
