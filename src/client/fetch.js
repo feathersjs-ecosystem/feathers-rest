@@ -16,7 +16,7 @@ export default class Service extends Base {
 
     return fetch(options.url, fetchOptions)
         .then(this.checkStatus)
-        .then(this.parseJSON);
+        .then(response => response.json());
   }
 
   checkStatus(response) {
@@ -24,29 +24,9 @@ export default class Service extends Base {
       return response;
     }
 
-    return new Promise((resolve, reject) => {
-      let body = response.body;
-      let buffer = '';
-
-      body.on('data', data => buffer += data.toString());
-      body.on('error', reject);
-      body.on('end', () => {
-        let error = new Error(buffer);
-
-        try {
-          error = JSON.parse(buffer);
-        } catch(e) {
-          error.code = response.status;
-        }
-
-        error.response = response;
-
-        reject(error);
-      });
+    return response.json().then(error => {
+      error.response = response;
+      throw error;
     });
-  }
-
-  parseJSON(response) {
-    return response.json();
   }
 }
