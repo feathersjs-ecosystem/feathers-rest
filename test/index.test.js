@@ -311,10 +311,21 @@ describe('REST provider', function () {
           }
         });
 
+      app.use(function(req, res, next) {
+        if(typeof res.data !== 'undefined') {
+          next(new Error('Should never get here'));
+        } else {
+          next();
+        }
+      });
+
       /* jshint ignore:start */
       // Error handler
       app.use(function (error, req, res, next) {
-        assert.equal(error.message, 'Method `create` is not supported by this endpoint.');
+        if(res.statusCode < 400) {
+          res.status(500);
+        }
+
         res.json({ message: error.message });
       });
       /* jshint ignore:end */
@@ -348,7 +359,7 @@ describe('REST provider', function () {
       });
     });
 
-    it('empty response sets 204 status codes', done => {
+    it('empty response sets 204 status codes, does not run other middleware (#391)', done => {
       request('http://localhost:4780/todo', (error, response) => {
         assert.ok(response.statusCode === 204, 'Got empty status code');
 
