@@ -1,5 +1,13 @@
 # Change Log
 
+## [v1.4.4](https://github.com/feathersjs/feathers-rest/tree/v1.4.4) (2016-08-18)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.4.3...v1.4.4)
+
+**Merged pull requests:**
+
+- Call `next` properly in formatter [\#67](https://github.com/feathersjs/feathers-rest/pull/67) ([daffl](https://github.com/daffl))
+- Update mocha to version 3.0.0 🚀 [\#65](https://github.com/feathersjs/feathers-rest/pull/65) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
 ## [v1.4.3](https://github.com/feathersjs/feathers-rest/tree/v1.4.3) (2016-07-14)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.4.2...v1.4.3)
 
