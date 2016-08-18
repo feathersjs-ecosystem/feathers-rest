@@ -4,7 +4,7 @@ import wrappers from './wrappers';
 const debug = makeDebug('feathers-rest');
 
 function formatter(req, res, next) {
-  if(typeof res.data === 'undefined') {
+  if(res.data === undefined) {
     return next();
   }
 
