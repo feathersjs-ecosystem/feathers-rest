@@ -6,7 +6,7 @@ export default class Service extends Base {
 
     fetchOptions.headers = Object.assign({
       Accept: 'application/json'
-    }, fetchOptions.headers);
+    }, this.options.headers, fetchOptions.headers);
 
     if (options.body) {
       fetchOptions.body = JSON.stringify(options.body);
