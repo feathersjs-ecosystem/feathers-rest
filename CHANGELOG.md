@@ -1,5 +1,13 @@
 # Change Log
 
+## [v1.5.0](https://github.com/feathersjs/feathers-rest/tree/v1.5.0) (2016-09-09)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.4.4...v1.5.0)
+
+**Merged pull requests:**
+
+- Update feathers-memory to version 0.8.0 🚀 [\#73](https://github.com/feathersjs/feathers-rest/pull/73) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Allow using default fetch headers for all requests [\#72](https://github.com/feathersjs/feathers-rest/pull/72) ([bahmutov](https://github.com/bahmutov))
+
 ## [v1.4.4](https://github.com/feathersjs/feathers-rest/tree/v1.4.4) (2016-08-18)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.4.3...v1.4.4)
 
