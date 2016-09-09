@@ -4,6 +4,8 @@ export default class Service extends Base {
   request(options) {
     let opts = Object.assign({
       dataType: options.type || 'json'
+    }, {
+      headers: this.options.headers || {}
     }, options);
 
     if(options.body) {
