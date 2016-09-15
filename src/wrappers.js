@@ -39,7 +39,7 @@ function getHandler (method, getArgs, service) {
     }
 
     let params = Object.assign({}, req.params || {});
-    delete params.id;
+    delete params.__feathersId;
 
     // Grab the service parameters. Use req.feathers and set the query to req.query
     params = Object.assign({ query: req.query || {} }, params, req.feathers);
@@ -79,12 +79,12 @@ function reqNone () {
 
 // Returns the leading parameters for a `get` or `remove` request (the id)
 function reqId (req) {
-  return [ req.params.id || null ];
+  return [ req.params.__feathersId || null ];
 }
 
 // Returns the leading parameters for an `update` or `patch` request (id, data)
 function reqUpdate (req) {
-  return [ req.params.id || null, req.body ];
+  return [ req.params.__feathersId || null, req.body ];
 }
 
 // Returns the leading parameters for a `create` request (data)

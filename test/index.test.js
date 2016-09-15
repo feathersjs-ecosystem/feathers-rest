@@ -450,4 +450,34 @@ describe('REST provider', function () {
       server.close(done);
     });
   });
+
+  it('Extend params with route params and allows id property (#76, #407)', done => {
+    const todoService = {
+      get(id, params) {
+        return Promise.resolve({
+          id,
+          appId: params.appId,
+          paramsId: params.id
+        });
+      }
+    };
+
+    const app = feathers()
+      .configure(rest())
+      .use('/:appId/:id/todo', todoService);
+
+    const expected = {
+      id: 'dishes',
+      appId: 'theApp',
+      paramsId: 'myId'
+    };
+
+    const server = app.listen(6880).on('listening', function () {
+      request('http://localhost:6880/theApp/myId/todo/' + expected.id, (error, response, body) => {
+        assert.ok(response.statusCode === 200, 'Got OK status code');
+        assert.deepEqual(expected, JSON.parse(body));
+        server.close(done);
+      });
+    });
+  });
 });

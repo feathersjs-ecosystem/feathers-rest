@@ -30,7 +30,7 @@ export default function rest(handler = formatter) {
     app.providers.push(function (path, service, options) {
       const uri = path.indexOf('/') === 0 ? path : `/${path}`;
       const baseRoute = app.route(uri);
-      const idRoute = app.route(`${uri}/:id`);
+      const idRoute = app.route(`${uri}/:__feathersId`);
 
       let middleware = (options || {}).middleware || {};
       let before = middleware.before || [];
