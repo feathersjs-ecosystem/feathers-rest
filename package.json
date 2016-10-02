@@ -44,6 +44,9 @@
   "browser": {
     "./lib/index": "./lib/client/index"
   },
+  "greenkeeper": {
+    "ignore": "jsdom"
+  },
   "dependencies": {
     "debug": "^2.2.0",
     "feathers-commons": "^0.7.0",
