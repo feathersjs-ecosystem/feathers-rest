@@ -3,7 +3,6 @@ instrumentation:
   root: ./src/
   excludes:
     - lib/
-    - client/jquery.js
   include-all-sources: true
 reporting:
   print: summary

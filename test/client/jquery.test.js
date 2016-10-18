@@ -1,13 +1,13 @@
 import assert from 'assert';
 import feathers from 'feathers';
+import jsdom from 'jsdom';
 import baseTests from 'feathers-commons/lib/test/client';
 import errors from 'feathers-errors';
 
 import server from './server';
-import rest from '../../client';
+import rest from '../../src/client';
 
-describe.skip('jQuery REST connector', function() {
-  const jsdom = {};
+describe('jQuery REST connector', function() {
   const url = 'http://localhost:7676';
   const setup = rest(url).jquery({});
   const app = feathers().configure(setup);
