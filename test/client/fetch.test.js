@@ -5,7 +5,7 @@ import errors from 'feathers-errors';
 import baseTests from 'feathers-commons/lib/test/client';
 
 import server from './server';
-import rest from '../../client';
+import rest from '../../src/client';
 
 describe('fetch REST connector', function() {
   const url = 'http://localhost:8889';
