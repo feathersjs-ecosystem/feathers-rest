@@ -59,6 +59,7 @@
     "babel-core": "^6.3.26",
     "babel-plugin-add-module-exports": "^0.2.0",
     "babel-plugin-transform-object-assign": "^6.3.13",
+    "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "^6.3.13",
     "body-parser": "^1.14.2",
     "feathers": "^2.0.0-pre.1",

@@ -1,3 +1,5 @@
+if (!global._babelPolyfill) { require('babel-polyfill'); }
+
 import fetch from 'node-fetch';
 import assert from'assert';
 import feathers from 'feathers/client';
