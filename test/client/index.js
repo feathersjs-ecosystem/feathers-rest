@@ -45,4 +45,24 @@ describe('REST client tests', function() {
       assert.equal(e.message, 'Only one default client provider can be configured');
     }
   });
+
+  it('errors when id property for patch, update or remove is undefined', () => {
+
+    const rest = require('../../client');
+    const app = feathers().configure(rest('http://localhost:8889').fetch(fetch));
+
+    const service = app.service('todos');
+
+    return service.remove().catch(error => {
+      assert.equal(error.message, `id for 'remove' can not be undefined, only 'null' when removing multiple entries`);
+
+      return service.update(undefined, {}).catch(error => {
+        assert.equal(error.message, `id for 'update' can not be undefined, only 'null' when updating multiple entries`);
+
+        return service.patch(undefined, {}).catch(error => {
+          assert.equal(error.message, `id for 'patch' can not be undefined, only 'null' when updating multiple entries`);
+        });
+      });
+    });
+  });
 });

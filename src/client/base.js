@@ -57,6 +57,10 @@ export default class Base {
   }
 
   update(id, body, params = {}) {
+    if(typeof id === 'undefined') {
+      return Promise.reject(new Error(`id for 'update' can not be undefined, only 'null' when updating multiple entries`));
+    }
+
     return this.request({
       url: this.makeUrl(params.query, id),
       body,
@@ -66,6 +70,10 @@ export default class Base {
   }
 
   patch(id, body, params = {}) {
+    if(typeof id === 'undefined') {
+      return Promise.reject(new Error(`id for 'patch' can not be undefined, only 'null' when updating multiple entries`));
+    }
+
     return this.request({
       url: this.makeUrl(params.query, id),
       body,
@@ -75,6 +83,10 @@ export default class Base {
   }
 
   remove(id, params = {}) {
+    if(typeof id === 'undefined') {
+      return Promise.reject(new Error(`id for 'remove' can not be undefined, only 'null' when removing multiple entries`));
+    }
+
     return this.request({
       url: this.makeUrl(params.query, id),
       method: 'DELETE',
