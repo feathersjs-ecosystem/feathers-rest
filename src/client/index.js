@@ -10,33 +10,33 @@ const transports = {
   fetch: Fetch
 };
 
-export default function(base = '') {
+export default function (base = '') {
   const result = {};
 
   Object.keys(transports).forEach(key => {
     const Service = transports[key];
 
-    result[key] = function(connection, options = {}) {
-      if(!connection) {
+    result[key] = function (connection, options = {}) {
+      if (!connection) {
         throw new Error(`${key} has to be provided to feathers-rest`);
       }
-      
-      const defaultService = function(name) {
+
+      const defaultService = function (name) {
         return new Service({ base, name, connection, options });
       };
 
-      const initialize = function() {
-        if(typeof this.defaultService === 'function') {
+      const initialize = function () {
+        if (typeof this.defaultService === 'function') {
           throw new Error('Only one default client provider can be configured');
         }
-        
+
         this.rest = connection;
         this.defaultService = defaultService;
       };
-      
+
       initialize.Service = Service;
       initialize.service = defaultService;
-      
+
       return initialize;
     };
   });

@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import assert from'assert';
+import assert from 'assert';
 import feathers from 'feathers/client';
 import errors from 'feathers-errors';
 import baseTests from 'feathers-commons/lib/test/client';
@@ -7,17 +7,17 @@ import baseTests from 'feathers-commons/lib/test/client';
 import server from './server';
 import rest from '../../src/client';
 
-describe('fetch REST connector', function() {
+describe('fetch REST connector', function () {
   const url = 'http://localhost:8889';
   const setup = rest(url).fetch(fetch);
   const app = feathers().configure(setup);
   const service = app.service('todos');
 
-  before(function(done) {
+  before(function (done) {
     this.server = server().listen(8889, done);
   });
 
-  after(function(done) {
+  after(function (done) {
     this.server.close(done);
   });
 
@@ -28,11 +28,11 @@ describe('fetch REST connector', function() {
       'Authorization': 'let-me-in'
     };
     service.get(0, { headers }).then(todo => assert.deepEqual(todo, {
-        id: 0,
-        text: 'some todo',
-        complete: false,
-        query: {}
-      })).then(done).catch(done);
+      id: 0,
+      text: 'some todo',
+      complete: false,
+      query: {}
+    })).then(done).catch(done);
   });
 
   it('handles errors properly', done => {

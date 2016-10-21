@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import feathers from 'feathers/client';
 import assert from 'assert';
 
-describe('REST client tests', function() {
+describe('REST client tests', function () {
   it('is built correctly', () => {
     const init = require('../../client');
     const transports = init();
@@ -20,7 +20,7 @@ describe('REST client tests', function() {
 
     try {
       transports.fetch();
-    } catch(e) {
+    } catch (e) {
       assert.equal(e.message, 'fetch has to be provided to feathers-rest');
     }
   });
@@ -47,7 +47,6 @@ describe('REST client tests', function() {
   });
 
   it('errors when id property for patch, update or remove is undefined', () => {
-
     const rest = require('../../client');
     const app = feathers().configure(rest('http://localhost:8889').fetch(fetch));
 
