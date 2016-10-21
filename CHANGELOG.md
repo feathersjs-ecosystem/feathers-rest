@@ -1,5 +1,20 @@
 # Change Log
 
+## [v1.5.1](https://github.com/feathersjs/feathers-rest/tree/v1.5.1) (2016-10-21)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.5.0...v1.5.1)
+
+**Closed issues:**
+
+- Rest clients should not delete/patch/update everything if `id` is undefined [\#79](https://github.com/feathersjs/feathers-rest/issues/79)
+- Distinct [\#76](https://github.com/feathersjs/feathers-rest/issues/76)
+- Sequelize Params not passed through when using REST Client [\#75](https://github.com/feathersjs/feathers-rest/issues/75)
+
+**Merged pull requests:**
+
+- Throw error when update, patch or remove id is undefined [\#80](https://github.com/feathersjs/feathers-rest/pull/80) ([daffl](https://github.com/daffl))
+- adding code coverage [\#78](https://github.com/feathersjs/feathers-rest/pull/78) ([ekryski](https://github.com/ekryski))
+- Rename internal route id property [\#74](https://github.com/feathersjs/feathers-rest/pull/74) ([daffl](https://github.com/daffl))
+
 ## [v1.5.0](https://github.com/feathersjs/feathers-rest/tree/v1.5.0) (2016-09-09)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.4.4...v1.5.0)
 
