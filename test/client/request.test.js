@@ -7,32 +7,32 @@ import errors from 'feathers-errors';
 import server from './server';
 import rest from '../../src/client';
 
-describe('node-request REST connector', function() {
+describe('node-request REST connector', function () {
   const url = 'http://localhost:6777';
   const setup = rest(url).request(request);
   const app = feathers().configure(setup);
   const service = app.service('todos');
 
-  before(function(done) {
+  before(function (done) {
     this.server = server().listen(6777, done);
   });
 
-  after(function(done) {
+  after(function (done) {
     this.server.close(done);
   });
 
   baseTests(service);
 
-  it('supports custom headers', function(done){
+  it('supports custom headers', function (done) {
     let headers = {
       'Authorization': 'let-me-in'
     };
     service.get(0, { headers }).then(todo => assert.deepEqual(todo, {
-        id: 0,
-        text: 'some todo',
-        complete: false,
-        query: {}
-      })).then(done).catch(done);
+      id: 0,
+      text: 'some todo',
+      complete: false,
+      query: {}
+    })).then(done).catch(done);
   });
 
   it('can initialize a client instance', done => {

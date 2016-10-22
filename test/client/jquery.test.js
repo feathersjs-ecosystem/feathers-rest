@@ -7,18 +7,18 @@ import errors from 'feathers-errors';
 import server from './server';
 import rest from '../../src/client';
 
-describe('jQuery REST connector', function() {
+describe('jQuery REST connector', function () {
   const url = 'http://localhost:7676';
   const setup = rest(url).jquery({});
   const app = feathers().configure(setup);
   const service = app.service('todos');
 
-  before(function(done) {
-    this.server = server().listen(7676, function() {
+  before(function (done) {
+    this.server = server().listen(7676, function () {
       jsdom.env(
         '<html><body></body></html>',
         [ 'http://code.jquery.com/jquery-2.1.4.js' ],
-        function (err, window) {
+        function (err, window) { // eslint-disable-line handle-callback-err
           window.jQuery.support.cors = true;
           service.connection = window.jQuery;
           done();
@@ -27,22 +27,22 @@ describe('jQuery REST connector', function() {
     });
   });
 
-  after(function() {
+  after(function () {
     this.server.close();
   });
 
   baseTests(service);
 
-  it('supports custom headers', function(done){
+  it('supports custom headers', function (done) {
     let headers = {
       'Authorization': 'let-me-in'
     };
     service.get(0, { headers }).then(todo => assert.deepEqual(todo, {
-        id: 0,
-        text: 'some todo',
-        complete: false,
-        query: {}
-      })).then(done).catch(done);
+      id: 0,
+      text: 'some todo',
+      complete: false,
+      query: {}
+    })).then(done).catch(done);
   });
 
   it('can initialize a client instance', done => {

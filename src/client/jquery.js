@@ -1,14 +1,14 @@
 import Base from './base';
 
 export default class Service extends Base {
-  request(options) {
+  request (options) {
     let opts = Object.assign({
       dataType: options.type || 'json'
     }, {
       headers: this.options.headers || {}
     }, options);
 
-    if(options.body) {
+    if (options.body) {
       opts.data = JSON.stringify(options.body);
       opts.contentType = 'application/json';
     }
@@ -22,7 +22,7 @@ export default class Service extends Base {
 
         try {
           error = JSON.parse(error);
-        } catch(e) {
+        } catch (e) {
           error = new Error(xhr.responseText);
         }
 

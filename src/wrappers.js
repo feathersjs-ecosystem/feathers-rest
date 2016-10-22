@@ -17,7 +17,7 @@ const methodMap = {
   patch: 'PATCH',
   remove: 'DELETE'
 };
-const allowedMethods = function(service) {
+const allowedMethods = function (service) {
   return Object.keys(methodMap)
     .filter(method => typeof service[method] === 'function')
     .map(method => methodMap[method])
@@ -57,10 +57,10 @@ function getHandler (method, getArgs, service) {
       res.data = data;
       res.hook = hookObject(method, 'after', args.concat([ params, callback ]));
 
-      if(!data) {
+      if (!data) {
         debug(`No content returned for '${req.url}'`);
         res.status(statusCodes.noContent);
-      } else if(method === 'create') {
+      } else if (method === 'create') {
         res.status(statusCodes.created);
       }
 

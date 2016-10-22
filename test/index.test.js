@@ -1,4 +1,6 @@
-if(!global._babelPolyfill) { require('babel-polyfill'); }
+/* eslint-disable handle-callback-err */
+
+if (!global._babelPolyfill) { require('babel-polyfill'); }
 
 import assert from 'assert';
 import request from 'request';
@@ -15,11 +17,11 @@ describe('REST provider', function () {
       app = feathers().configure(rest(rest.formatter))
         .use(bodyParser.json())
         .use('codes', {
-          get(id, params, callback) {
+          get (id, params, callback) {
             callback();
           },
 
-          create(data, params, callback) {
+          create (data, params, callback) {
             callback(null, data);
           }
         })
@@ -33,10 +35,10 @@ describe('REST provider', function () {
     describe('Services', () => {
       it('sets the hook object in res.hook', done => {
         app.use('/hook', {
-          get(id, params, callback){
+          get (id, params, callback) {
             callback(null, { description: `You have to do ${id}` });
           }
-        }, function(req, res, next) {
+        }, function (req, res, next) {
           res.data.hook = res.hook;
           next();
         });
@@ -44,7 +46,7 @@ describe('REST provider', function () {
         request('http://localhost:4777/hook/dishes', (error, response, body) => {
           const hook = JSON.parse(body).hook;
           assert.deepEqual(hook, {
-            id:'dishes',
+            id: 'dishes',
             params: {
               query: {},
               provider: 'rest'
@@ -295,40 +297,38 @@ describe('REST provider', function () {
     let app;
     let server;
 
-    before(function() {
+    before(function () {
       app = feathers().configure(rest(rest.formatter))
         .use('todo', {
-          get(id) {
+          get (id) {
             return Promise.resolve({ description: `You have to do ${id}` });
           },
 
-          patch() {
+          patch () {
             return Promise.reject(new Error('Not implemented'));
           },
 
-          find() {
+          find () {
             return Promise.resolve(null);
           }
         });
 
-      app.use(function(req, res, next) {
-        if(typeof res.data !== 'undefined') {
+      app.use(function (req, res, next) {
+        if (typeof res.data !== 'undefined') {
           next(new Error('Should never get here'));
         } else {
           next();
         }
       });
 
-      /* jshint ignore:start */
       // Error handler
       app.use(function (error, req, res, next) {
-        if(res.statusCode < 400) {
+        if (res.statusCode < 400) {
           res.status(500);
         }
 
         res.json({ message: error.message });
       });
-      /* jshint ignore:end */
 
       server = app.listen(4780);
     });
@@ -370,7 +370,7 @@ describe('REST provider', function () {
 
   it('sets service parameters and provider type', done => {
     let service = {
-      get(id, params, callback) {
+      get (id, params, callback) {
         callback(null, params);
       }
     };
@@ -404,15 +404,15 @@ describe('REST provider', function () {
   it('lets you set the handler manually', done => {
     let app = feathers();
 
-    app.configure(rest(function(req, res) {
-        res.format({
-          'text/plain': function() {
-            res.end(`The todo is: ${res.data.description}`);
-          }
-        });
-      }))
+    app.configure(rest(function (req, res) {
+      res.format({
+        'text/plain': function () {
+          res.end(`The todo is: ${res.data.description}`);
+        }
+      });
+    }))
       .use('/todo', {
-        get(id, params, callback) {
+        get (id, params, callback) {
           callback(null, { description: `You have to do ${id}` });
         }
       });
@@ -435,7 +435,7 @@ describe('REST provider', function () {
     .configure(rest(rest.formatter))
     .use(bodyParser.json())
     .use('/todo', {
-      create(data, params, callback) {
+      create (data, params, callback) {
         callback(null, data);
       }
     });
@@ -453,7 +453,7 @@ describe('REST provider', function () {
 
   it('Extend params with route params and allows id property (#76, #407)', done => {
     const todoService = {
-      get(id, params) {
+      get (id, params) {
         return Promise.resolve({
           id,
           appId: params.appId,

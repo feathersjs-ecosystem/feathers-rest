@@ -3,8 +3,8 @@ import wrappers from './wrappers';
 
 const debug = makeDebug('feathers-rest');
 
-function formatter(req, res, next) {
-  if(res.data === undefined) {
+function formatter (req, res, next) {
+  if (res.data === undefined) {
     return next();
   }
 
@@ -15,7 +15,7 @@ function formatter(req, res, next) {
   });
 }
 
-export default function rest(handler = formatter) {
+export default function rest (handler = formatter) {
   return function () {
     const app = this;
 
@@ -36,7 +36,7 @@ export default function rest(handler = formatter) {
       let before = middleware.before || [];
       let after = middleware.after || [];
 
-      if(typeof handler === 'function') {
+      if (typeof handler === 'function') {
         after = after.concat(handler);
       }
 

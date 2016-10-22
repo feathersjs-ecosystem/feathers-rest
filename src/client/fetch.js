@@ -1,7 +1,7 @@
 import Base from './base';
 
 export default class Service extends Base {
-  request(options) {
+  request (options) {
     let fetchOptions = Object.assign({}, options);
 
     fetchOptions.headers = Object.assign({
@@ -19,7 +19,7 @@ export default class Service extends Base {
         .then(response => response.json());
   }
 
-  checkStatus(response) {
+  checkStatus (response) {
     if (response.ok) {
       return response;
     }
