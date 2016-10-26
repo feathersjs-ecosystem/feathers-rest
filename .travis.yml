@@ -1,13 +1,21 @@
 sudo: false
 language: node_js
 node_js:
-  - 'node'
-  - '6'
-  - '4'
+- node
+- '6'
+- '4'
+- iojs
+- '0.12'
+- '0.10'
 addons:
   code_climate:
-    repo_token: '81c775b1dd23640f4f3076537995bb1b0c13a6bd5e9a476bbc5b0f4e6997f576'
+    repo_token: 81c775b1dd23640f4f3076537995bb1b0c13a6bd5e9a476bbc5b0f4e6997f576
 before_script:
-  - npm install -g codeclimate-test-reporter
+- npm install -g codeclimate-test-reporter
 after_script:
-  - codeclimate-test-reporter < coverage/lcov.info
+- codeclimate-test-reporter < coverage/lcov.info
+notifications:
+  email: false
+  slack:
+    rooms:
+      secure: BlkMY8NVmYClqp9jW3EVeBFRsrhNCodDopRp66C885vXbR0prvgAmb6XylaVcik7Y/P+zbbfHkO8VI9HiGmNQgWQOh4hrXIYicQcuXwh0AUfjU9vNaxPq3xguPWkehKql5D2jvBxro8IjVM+yU9GSbpkZ/KZh/o8GniJY6jI6zdS3jIW9vHcuoKKwoH0afrpt8GR1NL7jO8dK5j4hH/0yf9y0Ay2CZw49Gjc/Pj4nZke41ZRbfBzWU/fVCm0PjcyxqUwWrOOoZicWQC9an4Pk8WuESZ7EL2SLSxJ67EZduc5euGf+xxaRwz2BdZ3h5+31cuRYH0Q6LeKcPvyjVjUKoD1vxGg6m/yPZvItjxqu5PJ+/vp4L0GibJDg5qX0JqkaRsT1kc+7oEfW+KsUlW0+R028n1m019Vb66f7mFMsFe8SebRDiNYlQu6CjnYbBXR0sTh6QthGyG7uBktVru+HvsYOpnKRa8ut8fvLY1mrq6WxJZ26Cv2ybB7TPcXZc5mnXe8uddotrbrtjLoAFBK37OAFFWSesGh2T2WJU2Eprugne/iZHNpzLzlP0xIgc3sIGi1jhaKCcgnVFLXCqPp3h6lmM2so5JZumO3CoHI4nd9tdDa+vDG5Zu0YhrTDvxwFiE/poGA6/uguI0td4cFx/8CAB5mIjDKnjnBF7K92mc=
