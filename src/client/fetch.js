@@ -21,7 +21,7 @@ export default class Service extends Base {
             return null;
           }
 
-          response.json();
+          return response.json();
         });
   }
 
