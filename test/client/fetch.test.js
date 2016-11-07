@@ -74,4 +74,11 @@ describe('fetch REST connector', function () {
       done();
     }).catch(done);
   });
+
+  it('returns null for 204 responses', done => {
+    service.remove(0, { query: { noContent: true } }).then(response => {
+      assert.strictEqual(response, null);
+      done();
+    }).catch(done);
+  });
 });
