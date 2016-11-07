@@ -16,7 +16,13 @@ export default class Service extends Base {
 
     return fetch(options.url, fetchOptions)
         .then(this.checkStatus)
-        .then(response => response.json());
+        .then(response => {
+          if (response.status === 204) {
+            return null;
+          }
+
+          response.json();
+        });
   }
 
   checkStatus (response) {
