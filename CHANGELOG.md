@@ -1,5 +1,18 @@
 # Change Log
 
+## [v1.5.2](https://github.com/feathersjs/feathers-rest/tree/v1.5.2) (2016-11-08)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.5.1...v1.5.2)
+
+**Closed issues:**
+
+- Client fails to parse json response on 204 status using fetch [\#83](https://github.com/feathersjs/feathers-rest/issues/83)
+
+**Merged pull requests:**
+
+- Return null for no-content responses with fetch [\#84](https://github.com/feathersjs/feathers-rest/pull/84) ([bedeoverend](https://github.com/bedeoverend))
+- Swapping rm to rifraf and using relative path to \_mocha for windows support [\#82](https://github.com/feathersjs/feathers-rest/pull/82) ([corymsmith](https://github.com/corymsmith))
+- jshint —\> semistandard [\#81](https://github.com/feathersjs/feathers-rest/pull/81) ([corymsmith](https://github.com/corymsmith))
+
 ## [v1.5.1](https://github.com/feathersjs/feathers-rest/tree/v1.5.1) (2016-10-21)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.5.0...v1.5.1)
 
