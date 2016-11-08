@@ -47,11 +47,15 @@ module.exports = function (configurer) {
         .then(data => Object.assign({ query: params.query }, data));
     },
 
-    remove (id) {
+    remove (id, params) {
       if (id === null) {
         return Promise.resolve({
           id, text: 'deleted many'
         });
+      }
+
+      if (params.query.noContent) {
+        return Promise.resolve();
       }
 
       return this._super.apply(this, arguments);
