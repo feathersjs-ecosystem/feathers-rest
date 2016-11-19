@@ -79,6 +79,6 @@
     "request": "^2.67.0",
     "rimraf": "^2.5.4",
     "semistandard": "^9.1.0",
-    "superagent": "^2.0.0"
+    "superagent": "^3.0.0"
   }
 }
