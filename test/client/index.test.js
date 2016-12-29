@@ -3,9 +3,10 @@ import feathers from 'feathers/client';
 import rest from '../../src/client';
 import assert from 'assert';
 
+const init = require('../../client');
+
 describe('REST client tests', function () {
   it('is built correctly', () => {
-    const init = require('../../client');
     const transports = init();
 
     assert.equal(typeof init, 'function');
@@ -16,7 +17,6 @@ describe('REST client tests', function () {
   });
 
   it('throw errors when no connection is provided', () => {
-    const init = require('../../client');
     const transports = init();
 
     try {
