@@ -40,6 +40,10 @@ export default class Base {
   }
 
   get (id, params = {}) {
+    if (typeof id === 'undefined') {
+      return Promise.reject(new Error(`id for 'get' can not be undefined`));
+    }
+
     return this.request({
       url: this.makeUrl(params.query, id),
       method: 'GET',
