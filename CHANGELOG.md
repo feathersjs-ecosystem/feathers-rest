@@ -1,5 +1,24 @@
 # Change Log
 
+## [v1.5.3](https://github.com/feathersjs/feathers-rest/tree/v1.5.3) (2016-12-30)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.5.2...v1.5.3)
+
+**Closed issues:**
+
+- Client: Support Service Middleware / Generic Service [\#91](https://github.com/feathersjs/feathers-rest/issues/91)
+- fn.call is not a function\(…\) on client side with webpack [\#89](https://github.com/feathersjs/feathers-rest/issues/89)
+- $in operator doesn't work correctly through rest [\#88](https://github.com/feathersjs/feathers-rest/issues/88)
+- add angular2 http client support [\#64](https://github.com/feathersjs/feathers-rest/issues/64)
+
+**Merged pull requests:**
+
+- Test and fix for undefined id on get [\#97](https://github.com/feathersjs/feathers-rest/pull/97) ([daffl](https://github.com/daffl))
+- Create .codeclimate.yml [\#92](https://github.com/feathersjs/feathers-rest/pull/92) ([larkinscott](https://github.com/larkinscott))
+- Tests for nested arrays and Mocha 3 updates [\#90](https://github.com/feathersjs/feathers-rest/pull/90) ([daffl](https://github.com/daffl))
+- Update superagent to version 3.0.0 🚀 [\#87](https://github.com/feathersjs/feathers-rest/pull/87) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update feathers-memory to version 1.0.0 🚀 [\#86](https://github.com/feathersjs/feathers-rest/pull/86) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+- Update feathers-commons to version 0.8.0 🚀 [\#85](https://github.com/feathersjs/feathers-rest/pull/85) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
 ## [v1.5.2](https://github.com/feathersjs/feathers-rest/tree/v1.5.2) (2016-11-08)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.5.1...v1.5.2)
 
