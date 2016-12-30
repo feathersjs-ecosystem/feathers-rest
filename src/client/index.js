@@ -2,12 +2,14 @@ import jQuery from './jquery';
 import Superagent from './superagent';
 import Request from './request';
 import Fetch from './fetch';
+import Axios from './axios';
 
 const transports = {
   jquery: jQuery,
   superagent: Superagent,
   request: Request,
-  fetch: Fetch
+  fetch: Fetch,
+  axios: Axios
 };
 
 export default function (base = '') {
