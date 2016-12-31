@@ -1,5 +1,16 @@
 # Change Log
 
+## [v1.6.0](https://github.com/feathersjs/feathers-rest/tree/v1.6.0) (2016-12-31)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.5.3...v1.6.0)
+
+**Closed issues:**
+
+- support axios? [\#94](https://github.com/feathersjs/feathers-rest/issues/94)
+
+**Merged pull requests:**
+
+- Add support for Axios as the client [\#98](https://github.com/feathersjs/feathers-rest/pull/98) ([daffl](https://github.com/daffl))
+
 ## [v1.5.3](https://github.com/feathersjs/feathers-rest/tree/v1.5.3) (2016-12-30)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.5.2...v1.5.3)
 
