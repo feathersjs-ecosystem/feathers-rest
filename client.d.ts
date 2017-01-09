@@ -15,7 +15,7 @@ interface HandlerResult extends Function{
 }
 
 interface Handler {
-  (connection, options) : () => HandlerResult;
+  (connection, options?) : () => HandlerResult;
 }
 
 interface Transport{
