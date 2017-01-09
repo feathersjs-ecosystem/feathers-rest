@@ -1,6 +1,4 @@
-
-
-interface handlerResult extends Function{
+interface HandlerResult extends Function{
   /**
    * initialize service
    */
@@ -16,15 +14,15 @@ interface handlerResult extends Function{
   service:any;
 }
 
-interface handler {
-  (connection, options = {}) : () => handlerResult;
+interface Handler {
+  (connection, options) : () => HandlerResult;
 }
 
-interface tranport{
-  jquery:     handler;
-  superagent: handler;
-  request:    handler;
-  fetch:      handler;
+interface Transport{
+  jquery:     Handler;
+  superagent: Handler;
+  request:    Handler;
+  fetch:      Handler;
 }
 
-export default function(base: string): transport;
+export default function(base: string): Transport;
