@@ -25,4 +25,6 @@ interface Transport{
   fetch:      Handler;
 }
 
-export default function(base: string): Transport;
+declare function rest(base: string): Transport;
+
+export = rest;

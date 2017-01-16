@@ -1,3 +1,7 @@
+declare function rest(handler:Function): Function;
 
-export default function rest(handler:Function): Function;
-export function formatter(req:any, res:any, next:Function): void;
+declare namespace rest{
+  export function formatter(req:any, res:any, next:Function): void;
+}
+
+export = rest;
