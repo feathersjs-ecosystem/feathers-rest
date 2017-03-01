@@ -4,6 +4,7 @@
   "version": "1.6.0",
   "homepage": "https://github.com/feathersjs/feathers-rest",
   "main": "lib/",
+  "types": ["./index.d.ts", "./client.d.ts"],
   "keywords": [
     "feathers",
     "feathers-plugin"
