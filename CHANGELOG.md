@@ -1,5 +1,17 @@
 # Change Log
 
+## [v1.7.0](https://github.com/feathersjs/feathers-rest/tree/v1.7.0) (2017-03-01)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.6.0...v1.7.0)
+
+**Closed issues:**
+
+- Custom HTTP status code response [\#99](https://github.com/feathersjs/feathers-rest/issues/99)
+
+**Merged pull requests:**
+
+- Typescript Definitions [\#101](https://github.com/feathersjs/feathers-rest/pull/101) ([AbraaoAlves](https://github.com/AbraaoAlves))
+- Adding Axios to readme [\#100](https://github.com/feathersjs/feathers-rest/pull/100) ([corymsmith](https://github.com/corymsmith))
+
 ## [v1.6.0](https://github.com/feathersjs/feathers-rest/tree/v1.6.0) (2016-12-31)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.5.3...v1.6.0)
 
