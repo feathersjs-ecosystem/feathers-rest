@@ -1,5 +1,12 @@
 # Change Log
 
+## [v1.7.1](https://github.com/feathersjs/feathers-rest/tree/v1.7.1) (2017-03-02)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.7.0...v1.7.1)
+
+**Merged pull requests:**
+
+- Improve typedefs [\#103](https://github.com/feathersjs/feathers-rest/pull/103) ([myknbani](https://github.com/myknbani))
+
 ## [v1.7.0](https://github.com/feathersjs/feathers-rest/tree/v1.7.0) (2017-03-01)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.6.0...v1.7.0)
 
