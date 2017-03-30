@@ -27,7 +27,7 @@ const allowedMethods = function (service) {
 
 // A function that returns the middleware for a given method and service
 // `getArgs` is a function that should return additional leading service arguments
-function getHandler (method, getArgs, service) {
+function getHandler(method, getArgs, service) {
   return function (req, res, next) {
     res.setHeader('Allow', allowedMethods(service).join(','));
 
@@ -42,7 +42,11 @@ function getHandler (method, getArgs, service) {
     delete params.__feathersId;
 
     // Grab the service parameters. Use req.feathers and set the query to req.query
-    params = Object.assign({ query: req.query || {} }, params, req.feathers);
+    params = Object.assign({
+      query: req.query || {},
+      headers: req.headers || {},
+      cookies: req.cookies || {}
+    }, params, req.feathers);
 
     // Run the getArgs callback, if available, for additional parameters
     const args = getArgs(req, res, next);
@@ -55,7 +59,7 @@ function getHandler (method, getArgs, service) {
       }
 
       res.data = data;
-      res.hook = hookObject(method, 'after', args.concat([ params, callback ]));
+      res.hook = hookObject(method, 'after', args.concat([params, callback]));
 
       if (!data) {
         debug(`No content returned for '${req.url}'`);
@@ -68,28 +72,28 @@ function getHandler (method, getArgs, service) {
     };
 
     debug(`REST handler calling \`${method}\` from \`${req.url}\``);
-    service[method].apply(service, args.concat([ params, callback ]));
+    service[method].apply(service, args.concat([params, callback]));
   };
 }
 
 // Returns no leading parameters
-function reqNone () {
+function reqNone() {
   return [];
 }
 
 // Returns the leading parameters for a `get` or `remove` request (the id)
-function reqId (req) {
-  return [ req.params.__feathersId || null ];
+function reqId(req) {
+  return [req.params.__feathersId || null];
 }
 
 // Returns the leading parameters for an `update` or `patch` request (id, data)
-function reqUpdate (req) {
-  return [ req.params.__feathersId || null, req.body ];
+function reqUpdate(req) {
+  return [req.params.__feathersId || null, req.body];
 }
 
 // Returns the leading parameters for a `create` request (data)
-function reqCreate (req) {
-  return [ req.body ];
+function reqCreate(req) {
+  return [req.body];
 }
 
 // Returns wrapped middleware for a service method.
