@@ -1,7 +1,7 @@
 {
   "name": "feathers-rest",
   "description": "The Feathers REST API provider",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "homepage": "https://github.com/feathersjs/feathers-rest",
   "main": "lib/",
   "types": [
