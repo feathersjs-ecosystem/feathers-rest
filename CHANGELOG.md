@@ -1,5 +1,18 @@
 # Change Log
 
+## [v1.7.2](https://github.com/feathersjs/feathers-rest/tree/v1.7.2) (2017-04-11)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.7.1...v1.7.2)
+
+**Closed issues:**
+
+- res.hook should exist in middleware after errors [\#106](https://github.com/feathersjs/feathers-rest/issues/106)
+- Add headers and remote IP [\#105](https://github.com/feathersjs/feathers-rest/issues/105)
+
+**Merged pull requests:**
+
+- Set res.hook on errors as well [\#107](https://github.com/feathersjs/feathers-rest/pull/107) ([daffl](https://github.com/daffl))
+- Update axios to version 0.16.0 🚀 [\#104](https://github.com/feathersjs/feathers-rest/pull/104) ([greenkeeperio-bot](https://github.com/greenkeeperio-bot))
+
 ## [v1.7.1](https://github.com/feathersjs/feathers-rest/tree/v1.7.1) (2017-03-02)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.7.0...v1.7.1)
 
