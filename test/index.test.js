@@ -58,6 +58,34 @@ describe('REST provider', function () {
         });
       });
 
+      it('sets the hook object in res.hook on error', done => {
+        app.use('/hook-error', {
+          get () {
+            return Promise.reject(new Error('I blew up'));
+          }
+        }, function (error, req, res, next) {
+          res.status(500);
+          res.json({
+            hook: res.hook,
+            error
+          });
+        });
+
+        request('http://localhost:4777/hook-error/dishes', (error, response, body) => {
+          const hook = JSON.parse(body).hook;
+          assert.deepEqual(hook, {
+            id: 'dishes',
+            params: {
+              query: {},
+              provider: 'rest'
+            },
+            method: 'get',
+            type: 'error'
+          });
+          done();
+        });
+      });
+
       it('GET .find', done => {
         request('http://localhost:4777/todo', (error, response, body) => {
           assert.ok(response.statusCode === 200, 'Got OK status code');
