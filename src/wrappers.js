@@ -49,13 +49,16 @@ function getHandler (method, getArgs, service) {
 
     // The service success callback which sets res.data or calls next() with the error
     const callback = function (error, data) {
+      const hookArgs = args.concat([ params, callback ]);
+
       if (error) {
         debug(`Error in REST handler: \`${error.message || error}\``);
+        res.hook = hookObject(method, 'error', hookArgs);
         return next(error);
       }
 
       res.data = data;
-      res.hook = hookObject(method, 'after', args.concat([ params, callback ]));
+      res.hook = hookObject(method, 'after', hookArgs);
 
       if (!data) {
         debug(`No content returned for '${req.url}'`);
