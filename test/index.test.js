@@ -1,13 +1,13 @@
 /* eslint-disable handle-callback-err */
 
-if (!global._babelPolyfill) { require('babel-polyfill'); }
-
 import assert from 'assert';
 import request from 'request';
 import feathers from 'feathers';
 import bodyParser from 'body-parser';
 import rest from '../src';
 import { Service as todoService, verify } from 'feathers-commons/lib/test-fixture';
+
+if (!global._babelPolyfill) { require('babel-polyfill'); }
 
 describe('REST provider', function () {
   describe('CRUD', function () {
