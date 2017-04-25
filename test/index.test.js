@@ -429,6 +429,40 @@ describe('REST provider', function () {
       });
   });
 
+  it('sets service parameters containing `_` as a prefix', done => {
+    let service = {
+      get (id, params, callback) {
+        callback(null, params);
+      }
+    };
+
+    let server = feathers().configure(rest(rest.formatter))
+      .use(function (req, res, next) {
+        assert.ok(req.feathers, 'Feathers object initialized');
+        req.feathers.test = 'Happy';
+        next();
+      })
+      .use('service', service)
+      .listen(4778);
+
+    request('http://localhost:4778/service/bla?_some=param&__another=thing&___last=one',
+      (error, response, body) => {
+        let expected = {
+          test: 'Happy',
+          provider: 'rest',
+          query: {
+            _some: 'param',
+            __another: 'thing',
+            ___last: 'one'
+          }
+        };
+
+        assert.ok(response.statusCode === 200, 'Got OK status code');
+        assert.deepEqual(JSON.parse(body), expected, 'Got params object back');
+        server.close(done);
+      });
+  });
+
   it('lets you set the handler manually', done => {
     let app = feathers();
 
