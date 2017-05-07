@@ -64,6 +64,7 @@
     "debug": "^2.2.0",
     "feathers-commons": "^0.8.0",
     "feathers-errors": "^2.0.1",
+    "is-stream": "^1.1.0",
     "qs": "^6.4.0"
   },
   "devDependencies": {
