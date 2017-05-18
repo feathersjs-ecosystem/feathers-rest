@@ -27,6 +27,7 @@ declare namespace rest {
     superagent: Handler;
     request: Handler;
     fetch: Handler;
+    axios: Handler;
   }
 }
 
