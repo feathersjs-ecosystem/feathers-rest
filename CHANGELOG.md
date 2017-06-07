@@ -1,5 +1,22 @@
 # Change Log
 
+## [v1.7.3](https://github.com/feathersjs/feathers-rest/tree/v1.7.3) (2017-06-07)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.7.2...v1.7.3)
+
+**Closed issues:**
+
+- $gte query example? [\#118](https://github.com/feathersjs/feathers-rest/issues/118)
+- JSON-API + feathers-rest [\#115](https://github.com/feathersjs/feathers-rest/issues/115)
+- $in: \[\] returning unexpected results [\#113](https://github.com/feathersjs/feathers-rest/issues/113)
+- Setting 'content-type' header properly with boundary [\#110](https://github.com/feathersjs/feathers-rest/issues/110)
+
+**Merged pull requests:**
+
+- Add typing support for axios [\#117](https://github.com/feathersjs/feathers-rest/pull/117) ([elixiao](https://github.com/elixiao))
+- Update semistandard to the latest version 🚀 [\#111](https://github.com/feathersjs/feathers-rest/pull/111) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- explicitly updating qs dependency due to security vulnerability [\#109](https://github.com/feathersjs/feathers-rest/pull/109) ([ekryski](https://github.com/ekryski))
+- Update dependencies to enable Greenkeeper 🌴 [\#108](https://github.com/feathersjs/feathers-rest/pull/108) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
 ## [v1.7.2](https://github.com/feathersjs/feathers-rest/tree/v1.7.2) (2017-04-11)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.7.1...v1.7.2)
 
