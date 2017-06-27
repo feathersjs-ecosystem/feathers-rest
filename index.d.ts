@@ -3,7 +3,7 @@ import 'express';
 declare function rest(handler?: Formatter): Function;
 
 declare interface Formatter {
-  (request: Express.Request, response: Express.Response, next?: Function);
+  (request: Express.Request, response: Express.Response, next?: Function): void;
 }
 
 declare namespace rest {
