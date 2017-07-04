@@ -1,11 +1,12 @@
 import Base from './base';
 
 export default class Service extends Base {
-  request(options) {
+
+  request (options) {
     const http = this.connection;
     const Headers = this.options.Headers;
 
-    if(!http || !Headers) {
+    if (!http || !Headers) {
       throw new Error(`Please pass angular's 'http' (instance) and and object with 'Headers' (class) to feathers-rest`);
     }
 
@@ -21,19 +22,6 @@ export default class Service extends Base {
         )
       )
     };
-
-    /* (from Angular docs - https://angular.io/api/http/RequestOptionsArgs)
-      interface RequestOptionsArgs {
-         url: string|null
-         method: string|RequestMethod|null
-         search: string|URLSearchParams|{[key: string]: any | any[]}|null
-         params: string|URLSearchParams|{[key: string]: any | any[]}|null
-         headers: Headers|null
-         body: any
-         withCredentials: boolean|null
-         responseType: ResponseContentType|null
-       }
-     */
 
     return new Promise((resolve, reject) => {
       http.request(url, requestOptions)
