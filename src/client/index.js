@@ -3,13 +3,15 @@ import Superagent from './superagent';
 import Request from './request';
 import Fetch from './fetch';
 import Axios from './axios';
+import Angular from './angular';
 
 const transports = {
   jquery: jQuery,
   superagent: Superagent,
   request: Request,
   fetch: Fetch,
-  axios: Axios
+  axios: Axios,
+  angular: Angular
 };
 
 export default function (base = '') {

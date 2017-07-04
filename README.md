@@ -13,7 +13,7 @@
 
 ## About
 
-This provider exposes [Feathers](http://feathersjs.com) services through a RESTful API using [Express](http://expressjs.com) that can be used with Feathers 1.x and 2.x as well as client support for Fetch, jQuery, Request, Superagent and axios.
+This provider exposes [Feathers](http://feathersjs.com) services through a RESTful API using [Express](http://expressjs.com) that can be used with Feathers 1.x and 2.x as well as client support for Fetch, jQuery, Request, Superagent, axios and angular2+'s HTTP Service.
 
 __Note:__ For the full API documentation go to [http://docs.feathersjs.com/rest/readme.html](http://docs.feathersjs.com/rest/readme.html).
 
@@ -56,6 +56,9 @@ import rest from 'feathers-rest/client';
 import jQuery from 'jquery';
 import request from 'request';
 import superagent from 'superagent';
+import axios from 'axios';
+import {Http, Headers} from '@angular/http';
+
 
 const app = feathers()
   .configure(rest('http://baseUrl').jquery(jQuery))
@@ -67,6 +70,8 @@ const app = feathers()
   .configure(rest('http://baseUrl').superagent(superagent))
   // or
     .configure(rest('http://baseUrl').axios(axios))
+  // or (using injected Http instance)
+    .configure(rest('http://baseUrl').angular(http, { Headers }))
 ```
 
 ## License
