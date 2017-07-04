@@ -1,5 +1,16 @@
 # Change Log
 
+## [v1.8.0](https://github.com/feathersjs/feathers-rest/tree/v1.8.0) (2017-07-04)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.7.4...v1.8.0)
+
+**Closed issues:**
+
+- Consider how to handle file upload [\#102](https://github.com/feathersjs/feathers-rest/issues/102)
+
+**Merged pull requests:**
+
+- add support for @angular/http [\#120](https://github.com/feathersjs/feathers-rest/pull/120) ([j2L4e](https://github.com/j2L4e))
+
 ## [v1.7.4](https://github.com/feathersjs/feathers-rest/tree/v1.7.4) (2017-06-27)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.7.3...v1.7.4)
 
