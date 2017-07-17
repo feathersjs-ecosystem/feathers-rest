@@ -60,7 +60,6 @@ import axios from 'axios';
 import {Http, Headers} from '@angular/http';
 import {HttpClient, HTTPHeaders} from '@angular/common/http';
 
-
 const app = feathers()
   .configure(rest('http://baseUrl').jquery(jQuery))
   // or

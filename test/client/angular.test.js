@@ -15,7 +15,7 @@ import {
 
 const xhr2 = require('xhr2');
 
-function createAngularHTTP () {
+function createAngularHTTP() {
   const XSRFStrategyShim = { configureRequest: () => {} };
   const serverXHR = { build: () => new xhr2.XMLHttpRequest() };
 
