@@ -4,6 +4,7 @@ import Request from './request';
 import Fetch from './fetch';
 import Axios from './axios';
 import Angular from './angular';
+import AngularHttpClient from './angular-http-client';
 
 const transports = {
   jquery: jQuery,
@@ -11,7 +12,8 @@ const transports = {
   request: Request,
   fetch: Fetch,
   axios: Axios,
-  angular: Angular
+  angular: Angular,
+  angularHttpClient: AngularHttpClient
 };
 
 export default function (base = '') {

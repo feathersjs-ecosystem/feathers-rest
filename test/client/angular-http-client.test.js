@@ -7,33 +7,26 @@ import server from './server';
 import rest from '../../src/client';
 
 import {
-  Http,
-  Headers,
-  BaseRequestOptions,
-  XHRBackend
-} from '@angular/http';
+  HttpClient,
+  HttpHeaders,
+  HttpXhrBackend
+} from '@angular/common/http';
 
 const xhr2 = require('xhr2');
 
-function createAngularHTTP() {
-  const XSRFStrategyShim = { configureRequest: () => {} };
+function createAngularHTTPClient () {
   const serverXHR = { build: () => new xhr2.XMLHttpRequest() };
 
-  return new Http(
-    new XHRBackend(
-      serverXHR,
-      new BaseRequestOptions(),
-      XSRFStrategyShim
-    ),
-    new BaseRequestOptions()
+  return new HttpClient(
+    new HttpXhrBackend(serverXHR)
   );
 }
 
-describe('@angular/http REST connector', function () {
-  const angularHttp = createAngularHTTP();
+describe('@angular/common/http REST connector', function () {
+  const angularHttpClient = createAngularHTTPClient();
 
   const url = 'http://localhost:8889';
-  const setup = rest(url).angular(angularHttp, {Headers});
+  const setup = rest(url).angularHttpClient(angularHttpClient, {HttpHeaders});
   const app = feathers().configure(setup);
   const service = app.service('todos');
 
@@ -63,7 +56,7 @@ describe('@angular/http REST connector', function () {
   });
 
   it('can initialize a client instance', () => {
-    const init = rest(url).angular(angularHttp, {Headers});
+    const init = rest(url).angularHttpClient(angularHttpClient, {HttpHeaders});
     const todos = init.service('todos');
 
     assert.ok(todos instanceof init.Service, 'Returned service is a client');
