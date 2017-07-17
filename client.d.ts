@@ -29,6 +29,7 @@ declare namespace rest {
     fetch: Handler;
     axios: Handler;
     angular: Handler;
+    angularHttpClient: Handler;
   }
 }
 

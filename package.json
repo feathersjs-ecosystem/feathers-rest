@@ -67,10 +67,10 @@
     "qs": "^6.4.0"
   },
   "devDependencies": {
-    "@angular/common": "^4.2.5",
-    "@angular/core": "^4.2.5",
-    "@angular/http": "^4.2.5",
-    "@angular/platform-browser": "^4.2.5",
+    "@angular/common": "^4.3.0",
+    "@angular/core": "^4.3.0",
+    "@angular/http": "^4.3.0",
+    "@angular/platform-browser": "^4.3.0",
     "axios": "^0.16.0",
     "babel-cli": "^6.3.17",
     "babel-core": "^6.3.26",
