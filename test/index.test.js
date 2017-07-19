@@ -1,11 +1,14 @@
 /* eslint-disable handle-callback-err */
+const assert = require('assert');
+const request = require('request');
+const feathers = require('feathers');
+const bodyParser = require('body-parser');
+const rest = require('../lib');
 
-import assert from 'assert';
-import request from 'request';
-import feathers from 'feathers';
-import bodyParser from 'body-parser';
-import rest from '../src';
-import { Service as todoService, verify } from 'feathers-commons/lib/test-fixture';
+const {
+  Service,
+  verify
+} = require('feathers-commons/lib/test-fixture');
 
 describe('REST provider', function () {
   describe('CRUD', function () {
@@ -23,9 +26,9 @@ describe('REST provider', function () {
             callback(null, data);
           }
         })
-        .use('todo', todoService);
+        .use('todo', Service);
 
-      server = app.listen(4777, () => app.use('tasks', todoService));
+      server = app.listen(4777, () => app.use('tasks', Service));
     });
 
     after(done => server.close(done));
@@ -478,7 +481,7 @@ describe('REST provider', function () {
   });
 
   it('Extend params with route params and allows id property (#76, #407)', done => {
-    const todoService = {
+    const Service = {
       get (id, params) {
         return Promise.resolve({
           id,
@@ -490,7 +493,7 @@ describe('REST provider', function () {
 
     const app = feathers()
       .configure(rest())
-      .use('/:appId/:id/todo', todoService);
+      .use('/:appId/:id/todo', Service);
 
     const expected = {
       id: 'dishes',
