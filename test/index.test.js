@@ -3,14 +3,8 @@ const assert = require('assert');
 const request = require('request');
 const feathers = require('feathers');
 const bodyParser = require('body-parser');
+const { Service, verify } = require('feathers-commons/lib/test-fixture');
 const rest = require('../lib');
-
-const {
-  Service,
-  verify
-} = require('feathers-commons/lib/test-fixture');
-
-console.log(require('feathers-commons/lib/test-fixture'));
 
 describe('REST provider', function () {
   describe('CRUD', function () {
