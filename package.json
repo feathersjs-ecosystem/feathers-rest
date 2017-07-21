@@ -54,6 +54,7 @@
     "axios": "^0.16.2",
     "body-parser": "^1.14.2",
     "feathers": "^3.0.0-pre.1",
+    "feathers-commons": "^0.8.7",
     "feathers-express": "^1.0.0-pre.1",
     "feathers-memory": "^1.0.0",
     "istanbul": "^1.1.0-alpha.1",
