@@ -4,10 +4,6 @@
   "version": "2.0.0-pre.0",
   "homepage": "https://github.com/feathersjs/feathers-rest",
   "main": "lib/",
-  "types": [
-    "./index.d.ts",
-    "./client.d.ts"
-  ],
   "keywords": [
     "feathers",
     "feathers-plugin"
@@ -37,6 +33,7 @@
     "release:major": "npm version major && npm publish",
     "lint": "semistandard --fix",
     "mocha": "mocha --opts mocha.opts",
+    "mocha:watch": "mocha --opts mocha.opts --watch",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --opts mocha.opts",
     "test": "npm run lint && npm run coverage"
   },
@@ -48,25 +45,19 @@
   "directories": {
     "lib": "lib"
   },
-  "browser": {
-    "./lib/index": "./lib/client/index"
-  },
-  "greenkeeper": {
-    "ignore": "jsdom"
-  },
   "dependencies": {
     "debug": "^2.2.0",
-    "feathers-commons": "^0.8.0",
     "feathers-errors": "^2.0.1",
     "qs": "^6.4.0"
   },
   "devDependencies": {
+    "axios": "^0.16.2",
     "body-parser": "^1.14.2",
-    "feathers": "^2.0.0-pre.1",
+    "feathers": "^3.0.0-pre.1",
+    "feathers-express": "^1.0.0-pre.1",
     "feathers-memory": "^1.0.0",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.0.0",
-    "request": "^2.81.0",
     "semistandard": "^11.0.0"
   }
 }
