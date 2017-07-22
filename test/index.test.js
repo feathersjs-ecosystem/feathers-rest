@@ -426,7 +426,7 @@ describe('REST provider', function () {
           get (id, params) {
             return Promise.resolve({
               id,
-              query: params.query
+              route: params.route
             });
           }
         });
@@ -436,32 +436,16 @@ describe('REST provider', function () {
 
     after(done => server.close(done));
 
-    it('extend query with route params and allows id property (#76, #407)', () => {
+    it('adds route params as `params.route` and allows id property (#76, #407)', () => {
       const expected = {
         id: 'dishes',
-        query: {
+        route: {
           appId: 'theApp',
           id: 'myId'
         }
       };
 
       return axios.get(`http://localhost:6880/theApp/myId/todo/${expected.id}`)
-        .then(res => {
-          assert.ok(res.status === 200, 'Got OK status code');
-          assert.deepEqual(expected, res.data);
-        });
-    });
-
-    it('route parameters have precedence', () => {
-      const expected = {
-        id: 'dishes',
-        query: {
-          appId: 'theApp',
-          id: 'myId'
-        }
-      };
-
-      return axios.get(`http://localhost:6880/theApp/myId/todo/${expected.id}?id=10&appId=test`)
         .then(res => {
           assert.ok(res.status === 200, 'Got OK status code');
           assert.deepEqual(expected, res.data);

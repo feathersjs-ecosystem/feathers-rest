@@ -76,6 +76,6 @@ const app = feathers()
 
 ## License
 
-Copyright (c) 2015
+Copyright (c) 2017
 
 Licensed under the [MIT license](LICENSE).
