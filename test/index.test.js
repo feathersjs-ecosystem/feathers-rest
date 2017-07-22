@@ -326,24 +326,23 @@ describe('REST provider', function () {
       const data = { message: 'It worked' };
       const app = expressify(feathers()).use('/test',
         rest.formatter,
-        (req, res) => res.json(data));
+        (req, res) => res.json(data)
+      );
 
       const server = app.listen(7988);
 
       return axios.get('http://localhost:7988/test')
-        .then(res => {
-          assert.deepEqual(res.data, data);
-        })
+        .then(res => assert.deepEqual(res.data, data))
         .then(() => server.close());
     });
   });
 
   describe('HTTP status codes', () => {
-    let app;
-    let server;
+    let app, server;
 
     before(function () {
-      app = expressify(feathers()).configure(rest(rest.formatter))
+      app = expressify(feathers())
+        .configure(rest(rest.formatter))
         .use('todo', {
           get (id) {
             return Promise.resolve({
