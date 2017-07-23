@@ -1,5 +1,19 @@
 # Change Log
 
+## [v2.0.0-pre.1](https://github.com/feathersjs/feathers-rest/tree/v2.0.0-pre.1) (2017-07-23)
+[Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.8.0...v2.0.0-pre.1)
+
+**Closed issues:**
+
+- How to return a pdf download file instead of data ? [\#125](https://github.com/feathersjs/feathers-rest/issues/125)
+- Map route parameters to `params.route` [\#124](https://github.com/feathersjs/feathers-rest/issues/124)
+
+**Merged pull requests:**
+
+- Map route parameters to params.route [\#126](https://github.com/feathersjs/feathers-rest/pull/126) ([daffl](https://github.com/daffl))
+- Update REST provider to Feathers v3 [\#123](https://github.com/feathersjs/feathers-rest/pull/123) ([daffl](https://github.com/daffl))
+- Update plugin infrastructure and remove client functionality [\#122](https://github.com/feathersjs/feathers-rest/pull/122) ([daffl](https://github.com/daffl))
+
 ## [v1.8.0](https://github.com/feathersjs/feathers-rest/tree/v1.8.0) (2017-07-04)
 [Full Changelog](https://github.com/feathersjs/feathers-rest/compare/v1.7.4...v1.8.0)
 
