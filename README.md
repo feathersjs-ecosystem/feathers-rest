@@ -15,7 +15,7 @@
 
 This provider exposes [Feathers](http://feathersjs.com) services through a RESTful API using [Express](http://expressjs.com) that can be used with Feathers 1.x and 2.x as well as client support for Fetch, jQuery, Request, Superagent, axios and angular2+'s HTTP Service.
 
-__Note:__ For the full API documentation go to [http://docs.feathersjs.com/rest/readme.html](http://docs.feathersjs.com/rest/readme.html).
+__Note:__ For the full API documentation go to [https://docs.feathersjs.com/api/rest.html](https://docs.feathersjs.com/api/rest.html).
 
 ## Quick example
 
