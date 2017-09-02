@@ -7,8 +7,6 @@ import bodyParser from 'body-parser';
 import rest from '../src';
 import { Service as todoService, verify } from 'feathers-commons/lib/test-fixture';
 
-if (!global._babelPolyfill) { require('babel-polyfill'); }
-
 describe('REST provider', function () {
   describe('CRUD', function () {
     let server, app;
