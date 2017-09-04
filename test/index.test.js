@@ -144,6 +144,7 @@ describe('REST provider', function () {
             assert.deepEqual(res.data, {
               id: 'dishes',
               params: {
+                route: {},
                 query: { test: 'param' },
                 provider: 'rest'
               },
@@ -201,7 +202,11 @@ describe('REST provider', function () {
             assert.deepEqual(error.response.data, {
               hook: {
                 id: 'dishes',
-                params: { query: {}, provider: 'rest' },
+                params: {
+                  route: {},
+                  query: {},
+                  provider: 'rest'
+                },
                 type: 'error',
                 method: 'get',
                 path: 'hook-error',
@@ -238,6 +243,7 @@ describe('REST provider', function () {
           let expected = {
             test: 'Happy',
             provider: 'rest',
+            route: {},
             query: {
               some: 'param',
               another: 'thing'
