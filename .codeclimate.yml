@@ -8,8 +8,6 @@ engines:
       - test/
   eslint:
     enabled: true
-  nodesecurity:
-    enabled: true
 ratings:
   paths:
     - "**.js"
