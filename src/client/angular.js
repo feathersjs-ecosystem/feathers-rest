@@ -1,7 +1,6 @@
 import Base from './base';
 
 export default class Service extends Base {
-
   request (options) {
     const http = this.connection;
     const Headers = this.options.Headers;
@@ -24,14 +23,13 @@ export default class Service extends Base {
     };
 
     return new Promise((resolve, reject) => {
-      http.request(url, requestOptions)
-        .subscribe(resolve, reject);
-      })
-      .then(res => res.json())
-      .catch(error => {
-        const response = error.response || error;
+      http.request(url, requestOptions).subscribe(resolve, reject);
+    })
+    .then(res => res.json())
+    .catch(error => {
+      const response = error.response || error;
 
-        throw response instanceof Error ? response : (response.json() || response);
-      });
+      throw response instanceof Error ? response : (response.json() || response);
+    });
   }
 }
