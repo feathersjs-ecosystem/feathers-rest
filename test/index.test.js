@@ -506,4 +506,47 @@ describe('REST provider', function () {
       });
     });
   });
+
+  it('Allows streams to be returned from services', done => {
+    const todoService = {
+      get (id, params) {
+        return Promise.resolve({
+          id
+        });
+      }
+    };
+
+    const todoApp = feathers()
+      .configure(rest())
+      .use('/todo', todoService);
+    todoApp.set('port', 4781);
+
+    const proxyService = {
+      get (id, params) {
+        const stream = request(`http://localhost:${todoApp.get('port')}/todo/${id}`);
+        return Promise.resolve(stream);
+      }
+    };
+
+    const proxyApp = feathers()
+      .configure(rest())
+      .use('/proxy', proxyService);
+    proxyApp.set('port', 4782);
+
+    const expected = {
+      id: 'proxied-todo'
+    };
+
+    const todoServer = todoApp.listen(todoApp.get('port')).on('listening', () => {
+      const proxyServer = proxyApp.listen(proxyApp.get('port')).on('listening', () => {
+        request(`http://localhost:${proxyApp.get('port')}/proxy/${expected.id}`, (error, response, body) => {
+          assert.ok(response.statusCode === 200, 'Got OK status code');
+          assert.deepEqual(expected, JSON.parse(body));
+          todoServer.close(() => {
+            proxyServer.close(done);
+          });
+        });
+      });
+    });
+  });
 });

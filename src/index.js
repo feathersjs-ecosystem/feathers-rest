@@ -1,4 +1,5 @@
 import makeDebug from 'debug';
+import isStream from 'is-stream';
 import wrappers from './wrappers';
 
 const debug = makeDebug('feathers-rest');
@@ -6,6 +7,10 @@ const debug = makeDebug('feathers-rest');
 function formatter (req, res, next) {
   if (res.data === undefined) {
     return next();
+  }
+
+  if (isStream(res.data)) {
+    return res.data.pipe(res);
   }
 
   res.format({
