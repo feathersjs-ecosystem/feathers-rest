@@ -1,5 +1,7 @@
 # feathers-rest
 
+> _Important:_ For Feathers v3.0.0 and later, `feathers-rest` is has been replaced by framework specific adapters. Use `@feathersjs/express` and `@feathersjs/express/rest` provided in that module instead.
+
 [![Greenkeeper badge](https://badges.greenkeeper.io/feathersjs/feathers-rest.svg)](https://greenkeeper.io/)
 
 [![Build Status](https://travis-ci.org/feathersjs/feathers-rest.png?branch=master)](https://travis-ci.org/feathersjs/feathers-rest)

@@ -19,6 +19,10 @@ export default function rest (handler = formatter) {
   return function () {
     const app = this;
 
+    if (app.version && app.version >= '3.0.0') {
+      throw new Error(`feathers-rest is not compatible with Feathers v${app.version}. Use the Express framework bindings and REST adapter at @feathersjs/express instead.`);
+    }
+
     app.use(function (req, res, next) {
       req.feathers = { provider: 'rest' };
       next();
