@@ -509,7 +509,7 @@ describe('REST provider', function () {
     });
   });
 
-  if (process.version > '6.0.0') {
+  if (process.version > 'v6.0.0') {
     it('throws an error with Feathers >= v3', () => {
       const feathers3 = require('@feathersjs/feathers');
 
