@@ -2,7 +2,7 @@
   "name": "feathers-rest",
   "description": "The Feathers REST API provider",
   "version": "1.8.0",
-  "homepage": "https://github.com/feathersjs/feathers-rest",
+  "homepage": "https://github.com/feathersjs-ecosystem/feathers-rest",
   "main": "lib/",
   "types": [
     "./index.d.ts",
@@ -15,7 +15,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/feathersjs/feathers-rest.git"
+    "url": "git://github.com/feathersjs-ecosystem/feathers-rest.git"
   },
   "author": {
     "name": "Feathers contributors",
@@ -24,7 +24,7 @@
   },
   "contributors": [],
   "bugs": {
-    "url": "https://github.com/feathersjs/feathers-rest/issues"
+    "url": "https://github.com/feathersjs-ecosystem/feathers-rest/issues"
   },
   "engines": {
     "node": ">= 4"

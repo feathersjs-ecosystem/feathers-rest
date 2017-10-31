@@ -2,12 +2,12 @@
 
 > _Important:_ For Feathers v3.0.0 and later, `feathers-rest` is has been replaced by framework specific adapters. Use `@feathersjs/express` and `@feathersjs/express/rest` provided in that module instead.
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/feathersjs/feathers-rest.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/feathersjs-ecosystem/feathers-rest.svg)](https://greenkeeper.io/)
 
-[![Build Status](https://travis-ci.org/feathersjs/feathers-rest.png?branch=master)](https://travis-ci.org/feathersjs/feathers-rest)
-[![Code Climate](https://codeclimate.com/github/feathersjs/feathers-rest/badges/gpa.svg)](https://codeclimate.com/github/feathersjs/feathers-rest)
-[![Test Coverage](https://codeclimate.com/github/feathersjs/feathers-rest/badges/coverage.svg)](https://codeclimate.com/github/feathersjs/feathers-rest/coverage)
-[![Dependency Status](https://img.shields.io/david/feathersjs/feathers-rest.svg?style=flat-square)](https://david-dm.org/feathersjs/feathers-rest)
+[![Build Status](https://travis-ci.org/feathersjs-ecosystem/feathers-rest.png?branch=master)](https://travis-ci.org/feathersjs-ecosystem/feathers-rest)
+[![Code Climate](https://codeclimate.com/github/feathersjs-ecosystem/feathers-rest/badges/gpa.svg)](https://codeclimate.com/github/feathersjs-ecosystem/feathers-rest)
+[![Test Coverage](https://codeclimate.com/github/feathersjs-ecosystem/feathers-rest/badges/coverage.svg)](https://codeclimate.com/github/feathersjs-ecosystem/feathers-rest/coverage)
+[![Dependency Status](https://img.shields.io/david/feathersjs-ecosystem/feathers-rest.svg?style=flat-square)](https://david-dm.org/feathersjs-ecosystem/feathers-rest)
 [![Download Status](https://img.shields.io/npm/dm/feathers-rest.svg?style=flat-square)](https://www.npmjs.com/package/feathers-rest)
 [![Slack Status](http://slack.feathersjs.com/badge.svg)](http://slack.feathersjs.com)
 
