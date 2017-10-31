@@ -3,7 +3,6 @@
 import assert from 'assert';
 import request from 'request';
 import feathers from 'feathers';
-import feathers3 from '@feathersjs/feathers';
 import bodyParser from 'body-parser';
 import {
   Service as todoService, verify
@@ -397,15 +396,6 @@ describe('REST provider', function () {
     });
   });
 
-  it('throws an error with Feathers >= v3', () => {
-    try {
-      feathers3().configure(rest());
-      assert.ok(false, 'Should never get here');
-    } catch (e) {
-      assert.equal(e.message, `feathers-rest is not compatible with Feathers v${feathers3.version}. Use the Express framework bindings and REST adapter at @feathersjs/express instead.`);
-    }
-  });
-
   it('sets service parameters and provider type', done => {
     let service = {
       get (id, params, callback) {
@@ -518,4 +508,17 @@ describe('REST provider', function () {
       });
     });
   });
+
+  if (process.version > '6.0.0') {
+    it('throws an error with Feathers >= v3', () => {
+      const feathers3 = require('@feathersjs/feathers');
+
+      try {
+        feathers3().configure(rest());
+        assert.ok(false, 'Should never get here');
+      } catch (e) {
+        assert.equal(e.message, `feathers-rest is not compatible with Feathers v${feathers3.version}. Use the Express framework bindings and REST adapter at @feathersjs/express instead.`);
+      }
+    });
+  }
 });
