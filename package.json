@@ -71,6 +71,7 @@
     "@angular/core": "^4.2.5",
     "@angular/http": "^4.2.5",
     "@angular/platform-browser": "^4.2.5",
+    "@feathersjs/feathers": "^3.0.0-pre.3",
     "axios": "^0.17.0",
     "babel-cli": "^6.3.17",
     "babel-core": "^6.3.26",

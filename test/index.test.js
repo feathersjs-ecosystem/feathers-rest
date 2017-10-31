@@ -4,8 +4,10 @@ import assert from 'assert';
 import request from 'request';
 import feathers from 'feathers';
 import bodyParser from 'body-parser';
+import {
+  Service as todoService, verify
+} from 'feathers-commons/lib/test-fixture';
 import rest from '../src';
-import { Service as todoService, verify } from 'feathers-commons/lib/test-fixture';
 
 describe('REST provider', function () {
   describe('CRUD', function () {
@@ -506,4 +508,17 @@ describe('REST provider', function () {
       });
     });
   });
+
+  if (process.version > 'v6.0.0') {
+    it('throws an error with Feathers >= v3', () => {
+      const feathers3 = require('@feathersjs/feathers');
+
+      try {
+        feathers3().configure(rest());
+        assert.ok(false, 'Should never get here');
+      } catch (e) {
+        assert.equal(e.message, `feathers-rest is not compatible with Feathers v${feathers3.version}. Use the Express framework bindings and REST adapter at @feathersjs/express instead.`);
+      }
+    });
+  }
 });
