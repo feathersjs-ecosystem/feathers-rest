@@ -89,7 +89,7 @@
     "body-parser": "^1.14.2",
     "eslint-if-supported": "^1.0.1",
     "feathers": "^2.0.0-pre.1",
-    "feathers-memory": "^1.0.0",
+    "feathers-memory": "^2.0.0",
     "istanbul": "^1.1.0-alpha.1",
     "jsdom": "8.1.0",
     "mocha": "^4.0.0",
