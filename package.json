@@ -66,6 +66,14 @@
     "feathers-errors": "^2.0.1",
     "qs": "^6.4.0"
   },
+   "greenkeeper": {
+    "ignore": [
+      "@angular/common",
+      "@angular/core",
+      "@angular/http",
+      "@angular/platform-browser"
+    ]
+  },
   "devDependencies": {
     "@angular/common": "^4.2.5",
     "@angular/core": "^4.2.5",
