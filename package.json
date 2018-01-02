@@ -97,7 +97,7 @@
     "request": "^2.67.0",
     "rimraf": "^2.5.4",
     "rxjs": "^5.4.1",
-    "semistandard": "^11.0.0",
+    "semistandard": "^12.0.0",
     "superagent": "^3.0.0",
     "xhr2": "^0.1.4"
   }
